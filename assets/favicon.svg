@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Blossom Game">
+  <defs>
+    <linearGradient id="p" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff8fb3"/>
+      <stop offset="1" stop-color="#ff5c8a"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(32 32)">
+    <g fill="url(#p)">
+      <ellipse cx="0" cy="-16" rx="9" ry="13"/>
+      <ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(72)"/>
+      <ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(144)"/>
+      <ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(216)"/>
+      <ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(288)"/>
+    </g>
+    <circle r="9" fill="#ffcc4d"/>
+    <text x="0" y="5" font-family="'Fredoka',system-ui,sans-serif" font-size="13" font-weight="700" text-anchor="middle" fill="#7a3b1d">B</text>
+  </g>
+</svg>

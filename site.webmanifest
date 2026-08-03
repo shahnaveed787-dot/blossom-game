@@ -1,0 +1,12 @@
+{
+  "name": "Blossom Game",
+  "short_name": "Blossom",
+  "description": "Play the Blossom Word Game — a fun, educational word puzzle for all ages.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff9f5",
+  "theme_color": "#ff5c8a",
+  "icons": [
+    { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

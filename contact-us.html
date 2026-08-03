@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ff5c8a" />
+
+  <title>Contact Us | Blossom Game</title>
+  <meta name="description" content="Get in touch with the Blossom Game team. Send us your questions, feedback or ideas about the Blossom Word Game and we'll be happy to help." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.blossomgame.com/contact-us" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Blossom Game" />
+  <meta property="og:title" content="Contact Us | Blossom Game" />
+  <meta property="og:description" content="Send us your questions, feedback or ideas about Blossom Game." />
+  <meta property="og:url" content="https://www.blossomgame.com/contact-us" />
+  <meta property="og:image" content="https://www.blossomgame.com/assets/og-image.png" />
+
+  <link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Blossom Game",
+    "url": "https://www.blossomgame.com/contact-us",
+    "description": "Contact the Blossom Game team with questions, feedback or ideas.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Blossom Game",
+      "url": "https://www.blossomgame.com/",
+      "logo": "https://www.blossomgame.com/assets/favicon.svg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@blossomgame.com",
+        "contactType": "customer support",
+        "availableLanguage": "English"
+      }
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Blossom Game home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32)"><g fill="#ff5c8a"><ellipse cx="0" cy="-16" rx="9" ry="13"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(72)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(144)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(216)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(288)"/></g><circle r="9" fill="#ffcc4d"/></g></svg>
+        <span>Blossom<b>Game</b></span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/#how">How to Play</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn--primary nav-cta-desktop" href="/#play">Play Now</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <div>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/#how">How to Play</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a class="btn btn--primary" href="/#play">Play Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <ul class="breadcrumb">
+          <li><a href="/">Home</a></li>
+          <li>Contact Us</li>
+        </ul>
+        <h1>Contact Us</h1>
+        <p>Questions, feedback or a great idea? We would love to hear from you. Fill in the form below and our team will get back to you as soon as we can.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-form">
+            <div class="form-status" id="formStatus" role="status" aria-live="polite">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg>
+              <span>Thanks! Your message is ready — your email app will open to send it to us.</span>
+            </div>
+
+            <form id="contactForm" novalidate>
+              <div class="field">
+                <label for="cf-name">Name <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="cf-name" name="name" autocomplete="name" required aria-required="true" />
+                <span class="error-text">Please enter your name.</span>
+              </div>
+              <div class="field">
+                <label for="cf-email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="cf-email" name="email" autocomplete="email" required aria-required="true" />
+                <span class="error-text">Please enter a valid email address.</span>
+              </div>
+              <div class="field">
+                <label for="cf-subject">Subject</label>
+                <select id="cf-subject" name="subject">
+                  <option>General question</option>
+                  <option>Feedback or suggestion</option>
+                  <option>Report a problem</option>
+                  <option>Parent or teacher enquiry</option>
+                  <option>Partnership</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="cf-message">Message <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="cf-message" name="message" required aria-required="true" placeholder="How can we help?"></textarea>
+                <span class="error-text">Please enter a message (at least 10 characters).</span>
+              </div>
+              <button class="btn btn--primary btn--lg" type="submit" style="width:100%">Send Message</button>
+            </form>
+          </div>
+
+          <div class="info-stack">
+            <div class="info-card">
+              <div class="icon-badge bg-rose" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+              <div>
+                <h3>Email us</h3>
+                <p><a href="mailto:support@blossomgame.com">support@blossomgame.com</a></p>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="icon-badge bg-purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+              <div>
+                <h3>Response time</h3>
+                <p>We usually reply within 1–2 business days.</p>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="icon-badge bg-sky" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg></div>
+              <div>
+                <h3>For parents &amp; teachers</h3>
+                <p>Using Blossom at home or in class? Ask us anything about safe, educational play.</p>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="icon-badge bg-mint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H5.2L4 17.5z"/></svg></div>
+              <div>
+                <h3>Help &amp; FAQ</h3>
+                <p>Many answers are on our <a href="/#faq">FAQ section</a>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="/" aria-label="Blossom Game home">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32)"><g fill="#ff8fb3"><ellipse cx="0" cy="-16" rx="9" ry="13"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(72)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(144)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(216)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(288)"/></g><circle r="9" fill="#ffcc4d"/></g></svg>
+            <span>Blossom<b>Game</b></span>
+          </a>
+          <p>A fun, safe and educational Blossom Word Game that helps players build vocabulary, spelling and brain power — one delightful puzzle at a time.</p>
+          <div class="social">
+            <a href="/#play" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6v1.9H16l-.4 2.9h-2.1v7A10 10 0 0 0 22 12z"/></svg></a>
+            <a href="/#play" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+            <a href="/#play" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.3 8.3L23 22h-6.8l-5-6.6L5.4 22H2.3l7.8-8.9L2 2h7l4.5 6zM17.7 20h1.7L7.4 4H5.6z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Game</h4>
+          <ul>
+            <li><a href="/#play">Play Now</a></li>
+            <li><a href="/#how">How It Works</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#online">Play Anytime</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul>
+            <li><a href="/#benefits">Benefits</a></li>
+            <li><a href="/#brain">Brain &amp; Learning</a></li>
+            <li><a href="/#tips">Tips &amp; Strategies</a></li>
+            <li><a href="/#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Important Pages</h4>
+          <ul>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
+            <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/dmca">DMCA</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <p style="margin:0">© <span id="year">2026</span> Blossom Game. All rights reserved.</p>
+          <nav class="footer-legal" aria-label="Legal">
+            <a href="/about-us">About</a>
+            <a href="/contact-us">Contact</a>
+            <a href="/terms-and-conditions">Terms</a>
+            <a href="/privacy-policy">Privacy</a>
+            <a href="/dmca">DMCA</a>
+          </nav>
+        </div>
+        <p style="margin:0">Made with ✿ for curious minds.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

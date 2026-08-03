@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ff5c8a" />
+
+  <title>Blossom Game | Play the Blossom Word Game & Word Puzzle Online</title>
+  <meta name="description" content="Play Blossom Game, the fun educational word puzzle that builds vocabulary, spelling and brain power. A safe, colorful Blossom Word Game with daily challenges for kids, students, parents and teachers." />
+  <meta name="keywords" content="Blossom Game, Blossom Word Game, Blossom Word Puzzle, word puzzle game, educational games, vocabulary games, brain games, spelling games" />
+  <meta name="author" content="Blossom Game" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.blossomgame.com/" />
+
+  <!-- Icons -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/favicon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Blossom Game" />
+  <meta property="og:title" content="Blossom Game | Play the Blossom Word Game & Word Puzzle Online" />
+  <meta property="og:description" content="A fun, safe and educational Blossom Word Game that builds vocabulary, spelling and brain power with daily word puzzles for all ages." />
+  <meta property="og:url" content="https://www.blossomgame.com/" />
+  <meta property="og:image" content="https://www.blossomgame.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Blossom Game — play the Blossom Word Game online" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blossom Game | Play the Blossom Word Game Online" />
+  <meta name="twitter:description" content="A fun, safe and educational word puzzle that builds vocabulary, spelling and brain power. Play Blossom Game with daily challenges." />
+  <meta name="twitter:image" content="https://www.blossomgame.com/assets/og-image.png" />
+
+  <!-- Preload key font for fast, stable text render -->
+  <link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.blossomgame.com/#organization",
+        "name": "Blossom Game",
+        "url": "https://www.blossomgame.com/",
+        "logo": "https://www.blossomgame.com/assets/favicon.svg",
+        "description": "Blossom Game is a fun, safe and educational word puzzle platform that helps players build vocabulary, spelling and brain power."
+      },
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://www.blossomgame.com/#eduorg",
+        "name": "Blossom Game",
+        "url": "https://www.blossomgame.com/",
+        "description": "An educational word game platform supporting vocabulary development, spelling practice and brain training for children, students, parents and teachers."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.blossomgame.com/#website",
+        "url": "https://www.blossomgame.com/",
+        "name": "Blossom Game",
+        "publisher": { "@id": "https://www.blossomgame.com/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.blossomgame.com/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "VideoGame",
+        "@id": "https://www.blossomgame.com/#game",
+        "name": "Blossom Word Game",
+        "alternateName": ["Blossom Game", "Blossom Word Puzzle"],
+        "url": "https://www.blossomgame.com/",
+        "image": "https://www.blossomgame.com/assets/og-image.png",
+        "description": "Blossom Word Game is an interactive word puzzle where players connect letters to build words, complete daily challenges and improve vocabulary while training the brain.",
+        "genre": ["Word Puzzle", "Educational Game", "Brain Game"],
+        "gamePlatform": ["Web Browser", "Mobile", "Tablet", "Desktop"],
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any (Web Browser)",
+        "publisher": { "@id": "https://www.blossomgame.com/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "2143",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.blossomgame.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Blossom Game free to play?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, Blossom Game is designed as an accessible word puzzle experience where players can enjoy challenging puzzles without complicated requirements." }
+          },
+          {
+            "@type": "Question",
+            "name": "What makes Blossom different from other word games?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Blossom combines vocabulary improvement, creative thinking and daily challenges in a simple puzzle format." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Blossom Word Game good for improving spelling?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, playing spelling-based puzzles can help users become more familiar with words, letters and language patterns." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can children play Blossom Word Puzzle?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, children can enjoy Blossom as a fun learning activity while developing spelling and vocabulary skills." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Blossom have daily puzzles?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Daily challenges are one of the key features that keep players engaged and encourage regular practice." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Blossom Game home">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <g transform="translate(32 32)">
+            <g fill="#ff5c8a">
+              <ellipse cx="0" cy="-16" rx="9" ry="13"/>
+              <ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(72)"/>
+              <ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(144)"/>
+              <ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(216)"/>
+              <ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(288)"/>
+            </g>
+            <circle r="9" fill="#ffcc4d"/>
+          </g>
+        </svg>
+        <span>Blossom<b>Game</b></span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#top">Home</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="#how">How to Play</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn--primary nav-cta-desktop" href="#play">Play Now</a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="#how">How to Play</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a class="btn btn--primary" href="#play">Play Now</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <span id="top"></span>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">✿ Fun &amp; Educational Word Game</span>
+          <h1 id="hero-title">Blossom Game: Play <span class="grad">Blossom Word Game</span> Online and Challenge Your Word Skills</h1>
+          <p class="lead">Discover the fun of Blossom Game, a creative and engaging Blossom word game designed for players who enjoy vocabulary challenges, clever word combinations, and daily brain exercises. This relaxing yet challenging word puzzle game combines simple gameplay with powerful mental stimulation, making it a perfect choice for anyone who loves brain games, mind games, and entertaining learning experiences.</p>
+          <div class="hero-cta">
+            <a class="btn btn--primary btn--lg" href="#play">▶ Play Now</a>
+            <a class="btn btn--secondary btn--lg" href="#how">How It Works</a>
+          </div>
+          <div class="hero-stats" role="list">
+            <div role="listitem"><div class="num">4.9★</div><div class="lbl">Player rating</div></div>
+            <div role="listitem"><div class="num">10k+</div><div class="lbl">Words to discover</div></div>
+            <div role="listitem"><div class="num">100%</div><div class="lbl">Kid-safe &amp; free</div></div>
+          </div>
+        </div>
+
+        <!-- Interactive mini demo -->
+        <div class="hero-visual">
+          <svg class="floaty f1" viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32)"><g fill="#a78bfa"><ellipse cx="0" cy="-16" rx="9" ry="13"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(72)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(144)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(216)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(288)"/></g><circle r="9" fill="#ffcc4d"/></g></svg>
+          <svg class="floaty f2" viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32)"><g fill="#38bdf8"><ellipse cx="0" cy="-16" rx="9" ry="13"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(72)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(144)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(216)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(288)"/></g><circle r="9" fill="#ffcc4d"/></g></svg>
+          <svg class="floaty f3" viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32)"><g fill="#34d399"><ellipse cx="0" cy="-16" rx="9" ry="13"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(72)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(144)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(216)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(288)"/></g><circle r="9" fill="#ffcc4d"/></g></svg>
+
+          <div class="demo-card" id="play">
+            <div class="demo-head">
+              <span class="title">✿ Try a mini puzzle</span>
+              <span class="badge">Live demo</span>
+            </div>
+            <div class="demo-word" id="demoWord" aria-live="polite">
+              <span class="placeholder">Tap petals to build a word…</span>
+            </div>
+            <p class="demo-msg" id="demoMsg">Goal: spell a real word using the petals.</p>
+
+            <div class="flower" id="flower" role="group" aria-label="Letter petals">
+              <div class="flower-center" aria-hidden="true">✿</div>
+            </div>
+
+            <div class="demo-actions">
+              <button class="btn btn--secondary" type="button" id="demoClear">Clear</button>
+              <button class="btn btn--primary" type="button" id="demoCheck">Check word</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- keyword marquee strip -->
+    <div class="strip" aria-hidden="true">
+      <div class="strip-track">
+        <span>Blossom Word Game</span><span>Vocabulary Builder</span><span>Brain Training</span><span>Daily Word Puzzle</span><span>Spelling Practice</span><span>Educational Games</span>
+        <span>Blossom Word Game</span><span>Vocabulary Builder</span><span>Brain Training</span><span>Daily Word Puzzle</span><span>Spelling Practice</span><span>Educational Games</span>
+      </div>
+    </div>
+
+    <!-- ============ INTRO ============ -->
+    <section aria-label="Introduction to Blossom Game">
+      <div class="container">
+        <div class="section-head" style="max-width:820px">
+          <p class="lead">The Blossom Word Puzzle gives players a unique way to connect letters, create words, and improve their vocabulary while completing exciting puzzles. Whether you enjoy casual entertainment, want to practice spelling, or are searching for a daily mental challenge, blossom game offers an enjoyable experience for players of all ages.</p>
+          <p>Unlike traditional puzzle games, Blossom focuses on creativity, word formation, and logical thinking. Each challenge encourages players to discover new word combinations, improve concentration, and develop stronger language skills through interactive gameplay.</p>
+          <p style="margin-bottom:0"><strong>Play Blossom Game online</strong> and experience a modern word puzzle game that brings together entertainment, learning, and brain training in one simple platform.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHAT IS BLOSSOM ============ -->
+    <section id="about" class="bg-soft-rose" aria-labelledby="about-title">
+      <div class="container split">
+        <div class="split-copy">
+          <span class="eyebrow purple">Introduction</span>
+          <h2 id="about-title">What Is Blossom Game or Word Blossom?</h2>
+          <p>Blossom Game is an interactive word-based puzzle experience where players use available letters to create meaningful words and complete challenges. It is a combination of a Blossom word game, vocabulary activity, and brain-training exercise that rewards creativity and problem-solving.</p>
+          <p>The main goal is simple: analyze the given letters, discover possible words, and build successful word combinations. Each puzzle encourages players to think differently, recognize patterns, and improve their vocabulary naturally through practice.</p>
+          <p>As a modern online puzzle game, Blossom provides an enjoyable alternative to ordinary entertainment. Instead of only passing time, players can engage their minds with spelling challenges, language exercises, and problem-solving activities.</p>
+          <p style="margin-bottom:0">Whether you call it wordle blossom, word blossom game, or blossom word puzzle, the experience focuses on discovering words and enjoying every challenge.</p>
+        </div>
+        <div class="split-media">
+          <div class="media-card">
+            <span class="eyebrow">It works as</span>
+            <h3>Many games in one simple platform</h3>
+            <p>Many users enjoy Blossom because it fits different gaming preferences. It works as:</p>
+            <ul class="checklist">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>A <b>relaxing casual game</b> for quick entertainment</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>A <b>vocabulary game</b> for improving word knowledge</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>A <b>brain game</b> for daily mental practice</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>An <b>educational game</b> for learning through play</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>A <b>logic game</b> that improves problem-solving skills</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW DOES IT WORK ============ -->
+    <section id="how" aria-labelledby="howworks-title">
+      <div class="container split" style="align-items:start">
+        <div class="split-copy">
+          <span class="eyebrow sky">Gameplay</span>
+          <h2 id="howworks-title">How Does Blossom Word Game Work?</h2>
+          <p>The gameplay of the Blossom word game is based on connecting letters and creating correct words. Players receive a set of letters and must use their vocabulary skills to find possible combinations.</p>
+          <p>The game encourages players to carefully observe each letter and experiment with different word formations. Some answers may appear quickly, while others require deeper thinking and creative approaches.</p>
+          <p>Every puzzle creates a new opportunity to test your language ability and improve your mental agility.</p>
+          <p style="margin-bottom:0">The beauty of Blossom Game online is that it is easy to understand but challenging enough to keep players engaged. Beginners can start immediately, while experienced players can develop advanced puzzle-solving techniques.</p>
+        </div>
+        <div class="split-media">
+          <div class="media-card">
+            <span class="eyebrow purple">The basic process</span>
+            <h3>What each round involves</h3>
+            <p>The basic gameplay process includes:</p>
+            <ul class="checklist">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Looking at the available letters</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Creating different word combinations</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Finding correct word formations</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Completing daily challenges</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Using hints when needed</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Advancing through different difficulty levels</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW TO PLAY ============ -->
+    <section id="howto" class="bg-soft-purple" aria-labelledby="howto-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow purple">Step by step</span>
+          <h2 id="howto-title">How to Play Blossom Word Game Today Puzzle?</h2>
+          <p>Learning how to play Blossom Word Puzzle is simple. The game does not require complicated instructions or advanced gaming skills. Players only need curiosity, attention, and a willingness to explore words. To play Blossom:</p>
+        </div>
+        <div class="split" style="align-items:start">
+          <div class="steps">
+            <div class="step reveal"><div><h3>Examine the letters</h3><p>Examine the letters provided in the puzzle.</p></div></div>
+            <div class="step reveal"><div><h3>Think of possible words</h3><p>Think about possible words that can be created.</p></div></div>
+            <div class="step reveal"><div><h3>Combine the letters</h3><p>Combine letters to form valid words.</p></div></div>
+            <div class="step reveal"><div><h3>Complete the challenge</h3><p>Complete the challenge by discovering the required answers.</p></div></div>
+            <div class="step reveal"><div><h3>Use hints if needed</h3><p>Use hints if you need assistance.</p></div></div>
+            <div class="step reveal"><div><h3>Keep improving</h3><p>Continue improving through regular practice.</p></div></div>
+          </div>
+          <div class="split-media">
+            <div class="media-card">
+              <span class="eyebrow">Build a daily habit</span>
+              <h3>Fresh challenges, every day</h3>
+              <p>The more you play, the easier it becomes to identify patterns and recognize possible word combinations.</p>
+              <p style="margin-bottom:0">Many players use Blossom as a daily habit because each daily word puzzle provides a fresh challenge. This makes it different from ordinary games where the experience quickly becomes repetitive.</p>
+              <a class="btn btn--primary" href="#play" style="margin-top:22px">Try the demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section id="features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Features &amp; gameplay experience</span>
+          <h2 id="features-title">Blossom Word Puzzle Features and Gameplay Experience</h2>
+          <p>The popularity of Blossom puzzle game comes from its balance between simplicity and challenge. The game offers an enjoyable experience for people who want entertainment while keeping their minds active. Important gameplay features include:</p>
+        </div>
+        <div class="grid grid-2">
+          <article class="card reveal">
+            <div class="icon-badge bg-rose" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><path d="m5 5 3 3M19 5l-3 3M5 19l3-3M19 19l-3-3"/></svg></div>
+            <h3>Creative Word Formation</h3>
+            <p>The core of Blossom is word formation. Players are encouraged to explore different combinations of letters and discover words they may not immediately think of. This improves vocabulary improvement and helps users become more comfortable with language patterns.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01"/></svg></div>
+            <h3>Daily Challenges</h3>
+            <p>Daily challenges keep the experience fresh. Instead of completing the same type of puzzle repeatedly, players receive new opportunities to test their skills. A daily challenge creates motivation and encourages consistent practice.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-sky" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg></div>
+            <h3>Progressive Difficulty Levels</h3>
+            <p>Blossom includes different levels of difficulty progression, allowing beginners and advanced players to enjoy the game. Early puzzles help new players understand the mechanics, while later challenges require stronger vocabulary skills and better puzzle-solving techniques.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-mint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.2 1 2h6c0-.8.4-1.5 1-2A7 7 0 0 0 12 2z"/></svg></div>
+            <h3>Helpful Hints System</h3>
+            <p>When players become stuck, hints provide guidance without removing the challenge completely. Hints encourage learning by helping users discover possible solutions and understand new word patterns.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHY POPULAR ============ -->
+    <section id="popular" class="bg-soft-rose" aria-labelledby="popular-title">
+      <div class="container split">
+        <div class="split-copy">
+          <span class="eyebrow">Why players love it</span>
+          <h2 id="popular-title">Why Is Blossom Game Popular Among Word Puzzle Players?</h2>
+          <p>The growth of Blossom games comes from the increasing popularity of simple but meaningful digital experiences. Many players are moving toward games that offer entertainment while also providing mental stimulation.</p>
+          <p>Unlike fast-paced games, Blossom focuses on thinking, creativity, and language skills.</p>
+          <p>It belongs to the growing category of mobile puzzle games, online puzzle games, and free online games that people can enjoy anytime.</p>
+          <p style="margin-bottom:0">The game appeals to students, professionals, casual players, and anyone interested in improving their word skills.</p>
+        </div>
+        <div class="split-media">
+          <div class="media-card">
+            <span class="eyebrow purple">Players enjoy Blossom because it provides</span>
+            <h3>A balance of fun and learning</h3>
+            <ul class="checklist">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Simple gameplay that anyone can understand</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Short challenges suitable for daily practice</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Relaxing puzzle-solving experiences</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Opportunities for vocabulary improvement</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>A balance between fun and learning</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BENEFITS ============ -->
+    <section id="benefits" aria-labelledby="benefits-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow mint">Learning benefits</span>
+          <h2 id="benefits-title">Benefits of Playing Blossom Word Puzzle</h2>
+          <p>Playing a word puzzle game is not only entertaining but can also support important mental skills. Blossom combines fun gameplay with activities that encourage concentration, memory skills, and logical thinking.</p>
+        </div>
+        <div class="grid grid-2">
+          <article class="card reveal">
+            <div class="icon-badge bg-rose" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
+            <h3>Supports Vocabulary Development</h3>
+            <p>Regular word challenges expose players to different words and encourage them to think about spelling, meanings, and language patterns. This makes Blossom useful among other vocabulary games and language learning games.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 .5 2.5 2.5 0 0 1-3-3 3 3 0 0 1 0-6 2.5 2.5 0 0 1 1.5-4.5A2.5 2.5 0 0 1 9.5 2Z"/></svg></div>
+            <h3>Encourages Brain Training</h3>
+            <p>Blossom works as a form of brain training by requiring players to analyze information, search for solutions, and make connections between letters. These activities support cognitive training games and mental exercises that keep the mind engaged.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-sky" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/></svg></div>
+            <h3>Improves Concentration</h3>
+            <p>Finding words requires focus. Players must carefully examine letters and avoid random guesses. Over time, this practice can help improve concentration and attention during puzzle-solving activities.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-mint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0-6 6c0 2 1 3 2 4l1 2h6l1-2c1-1 2-2 2-4a6 6 0 0 0-6-6z"/><path d="M9 21h6M10 18h4"/></svg></div>
+            <h3>Develops Problem-Solving Skills</h3>
+            <p>Every puzzle creates a small problem that needs a solution. Players learn to approach challenges logically and test different possibilities. This makes Blossom a valuable example of problem-solving games that encourage creative thinking.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BRAIN & LEARNING ============ -->
+    <section id="brain" class="bg-ink" aria-labelledby="brain-title">
+      <div class="container split">
+        <div class="split-copy">
+          <span class="eyebrow purple">Brain &amp; learning experience</span>
+          <h2 id="brain-title" style="color:#fff">Blossom Game as a Brain and Learning Experience</h2>
+          <p>Many people enjoy games that provide more than entertainment. Blossom combines the enjoyment of casual gaming with elements of education and mental development.</p>
+          <p>As one of the popular educational games, it allows players to learn through interaction rather than traditional study methods.</p>
+          <p style="margin-bottom:0">For this reason, Blossom fits naturally into categories such as educational games, mind games, and cognitive training games. It is especially useful for people who enjoy learning while relaxing.</p>
+        </div>
+        <div class="split-media">
+          <div class="media-card" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.14)">
+            <span class="eyebrow purple">Word-based activities can encourage</span>
+            <h3 style="color:#fff">Skills that keep growing</h3>
+            <ul class="checklist">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span style="color:#d9d2e6">Better vocabulary skills</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span style="color:#d9d2e6">Faster word recognition</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span style="color:#d9d2e6">Improved spelling awareness</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span style="color:#d9d2e6">Stronger memory skills</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span style="color:#d9d2e6">Better pattern recognition</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span style="color:#d9d2e6">Increased mental agility</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PLAY ANYTIME ============ -->
+    <section id="online" aria-labelledby="online-title">
+      <div class="container split">
+        <div class="split-copy">
+          <span class="eyebrow sky">Play anytime, anywhere</span>
+          <h2 id="online-title">Blossom Game Online: Play Anytime, Anywhere</h2>
+          <p>The availability of Blossom online game options makes it easy for players to enjoy puzzles whenever they have free time. Whether you prefer playing on a computer, tablet, or mobile device, the experience remains simple and accessible.</p>
+          <p>Modern players often look for convenient entertainment, and Blossom meets this demand by offering:</p>
+          <ul class="checklist">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Easy access</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Simple controls</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Quick puzzle sessions</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Engaging word challenges</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Flexible gameplay</span></li>
+          </ul>
+          <p style="margin-top:16px;margin-bottom:0">The game fits perfectly into the world of free online games and modern digital entertainment. Players searching for play Blossom, play Blossom game, or blossom play can enjoy a straightforward puzzle experience without complicated setup.</p>
+        </div>
+        <div class="split-media">
+          <div class="daily-card reveal" id="daily">
+            <div style="position:relative;z-index:1">
+              <span class="eyebrow" style="background:rgba(255,255,255,0.2);color:#fff">Daily streak</span>
+              <h3 style="color:#fff;font-size:1.5rem">A fresh puzzle every day</h3>
+              <p>Keep your mind blooming — play each daily word puzzle and build a streak across the week.</p>
+              <div style="font-weight:600;margin:14px 0 10px">Your weekly streak</div>
+              <div class="streak" aria-hidden="true">
+                <div class="day done">M</div>
+                <div class="day done">T</div>
+                <div class="day done">W</div>
+                <div class="day done">T</div>
+                <div class="day today">F</div>
+                <div class="day">S</div>
+                <div class="day">S</div>
+              </div>
+              <a class="btn btn--sun" href="#play" style="margin-top:18px">Start today’s puzzle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRACTICE ============ -->
+    <section id="practice" class="bg-soft-purple" aria-labelledby="practice-title">
+      <div class="container split">
+        <div class="split-media">
+          <div class="media-card" style="background:linear-gradient(160deg,#fff,#f3efff)">
+            <span class="eyebrow purple">Effective practice methods include</span>
+            <h3>Small habits, big improvement</h3>
+            <ul class="checklist">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Reviewing missed words</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Exploring different letter combinations</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Playing daily challenges</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Expanding vocabulary</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m20 6-11 11-5-5"/></svg><span>Using logical thinking instead of guessing randomly</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="split-copy">
+          <span class="eyebrow purple">Improve over time</span>
+          <h2 id="practice-title">Blossom Game Practice: Improve Your Skills Over Time</h2>
+          <p>Like any skill, improving at Blossom requires practice. Regular gameplay helps players recognize common word patterns and develop better strategies.</p>
+          <p>Many experienced players develop personal puzzle-solving techniques that help them complete difficult challenges faster.</p>
+          <p style="margin-bottom:0">Practice also helps players understand how letters connect and how small changes can create completely different words.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TIPS & STRATEGIES ============ -->
+    <section id="tips" aria-labelledby="tips-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Tips &amp; strategies</span>
+          <h2 id="tips-title">Tips and Strategies for Solving Blossom Game Challenges</h2>
+          <p>To become better at Blossom, players can use several strategies.</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card reveal"><h3>🔤 Look for Common Letter Patterns</h3><p>Some letters frequently appear together in words. Recognizing these patterns can help you discover answers faster.</p></article>
+          <article class="card reveal"><h3>🌱 Start With Short Words</h3><p>Short words often reveal possible combinations and make it easier to find longer answers.</p></article>
+          <article class="card reveal"><h3>💡 Think Beyond Common Words</h3><p>Many players only search for obvious answers. Exploring less common words can help complete challenging puzzles.</p></article>
+          <article class="card reveal"><h3>🎯 Avoid Random Guessing</h3><p>Logical thinking is usually more effective than trying random combinations.</p></article>
+          <article class="card reveal"><h3>📅 Practice Regularly</h3><p>Daily gameplay improves familiarity with word structures and increases confidence.</p></article>
+          <article class="card reveal"><h3>✿ Strengthen Your Skills</h3><p>These techniques make Blossom more enjoyable while strengthening vocabulary and problem-solving ability.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WHO CAN PLAY ============ -->
+    <section id="who" class="bg-soft-sky" aria-labelledby="who-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow sky">For everyone</span>
+          <h2 id="who-title">Who Can Play Blossom Word Game?</h2>
+          <p>One of the biggest advantages of Blossom is its accessibility. The game can be enjoyed by different age groups and skill levels. Children can use it as a fun spelling activity, while adults can enjoy it as a relaxing mental exercise. It is suitable for:</p>
+        </div>
+        <div class="grid grid-3">
+          <article class="card reveal">
+            <div class="icon-badge bg-rose" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div>
+            <h3>Students improving vocabulary</h3>
+            <p>A fun way to grow word knowledge and spelling through regular play.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 .5 2.5 2.5 0 0 1-3-3 3 3 0 0 1 0-6 2.5 2.5 0 0 1 1.5-4.5A2.5 2.5 0 0 1 9.5 2Z"/></svg></div>
+            <h3>Adults looking for brain games</h3>
+            <p>A relaxing daily mental exercise that fits into any spare moment.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-sky" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M6 21v-1a6 6 0 0 1 12 0v1"/></svg></div>
+            <h3>Casual players wanting entertainment</h3>
+            <p>Quick, satisfying puzzle sessions for light, feel-good fun.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-mint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></div>
+            <h3>Word enthusiasts who enjoy challenges</h3>
+            <p>Tougher levels and less-common words for a rewarding challenge.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-sun" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg></div>
+            <h3>Anyone interested in language-based puzzles</h3>
+            <p>Because of its simple design, Blossom creates an inclusive gaming experience.</p>
+          </article>
+          <article class="card reveal">
+            <div class="icon-badge bg-purple" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <h3>Global players everywhere</h3>
+            <p>Word puzzles are universal — people connect through language and creativity.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ UK & GLOBAL ============ -->
+    <section id="global" aria-labelledby="global-title">
+      <div class="container">
+        <div class="section-head" style="max-width:820px">
+          <span class="eyebrow">UK &amp; global players</span>
+          <h2 id="global-title">Blossom Word Game UK and Global Players</h2>
+          <p>The popularity of Blossom word game UK searches shows the growing interest in word-based entertainment among English-speaking audiences.</p>
+          <p>Players around the world enjoy Blossom because word puzzles are universal. Regardless of location, people can connect through language, creativity, and problem-solving.</p>
+          <p style="margin-bottom:0">Whether users search for blossom word, blossom wordgame, blossomwordgame, or blossom-word-game, they are usually looking for the same enjoyable puzzle experience.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL THOUGHTS ============ -->
+    <section id="final" class="bg-soft-rose" aria-labelledby="final-title">
+      <div class="container">
+        <div class="section-head" style="max-width:820px">
+          <span class="eyebrow">Final thoughts</span>
+          <h2 id="final-title">Final Thoughts on Blossom Daily Word Game</h2>
+          <p>Blossom Game is more than a simple word activity. It is an engaging combination of a Blossom word puzzle, vocabulary challenge, brain exercise, and casual entertainment experience.</p>
+          <p>By combining letters, discovering word combinations, and completing daily challenges, players can enjoy a meaningful way to spend their time while improving language skills.</p>
+          <p style="margin-bottom:0">Whether you search for blossom game, blossom word game, play blossom word game, blossom puzzle game, or blossom games online, the goal remains the same: enjoy creative puzzles, challenge your mind, and discover new words every day.</p>
+        </div>
+
+        <div class="final-cta reveal">
+          <span class="eyebrow" style="background:rgba(255,255,255,0.16);color:#fff">Ready to bloom?</span>
+          <h2 style="color:#fff">Start playing Blossom today</h2>
+          <p>Start playing Blossom today and experience a fun world of word challenges, learning, and mental stimulation.</p>
+          <div class="hero-cta">
+            <a class="btn btn--primary btn--lg" href="#play">▶ Play Blossom Now</a>
+            <a class="btn btn--ghost btn--lg" href="#how">Learn how to play</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2 id="faq-title">Frequently Asked Questions</h2>
+          <p>Everything you might want to know before you start playing Blossom.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Is Blossom Game Free to Play?</summary>
+            <p>Yes, Blossom Game is designed as an accessible word puzzle experience where players can enjoy challenging puzzles without complicated requirements.</p>
+          </details>
+          <details>
+            <summary>What Makes Blossom Different From Other Word Games?</summary>
+            <p>Blossom combines vocabulary improvement, creative thinking, and daily challenges in a simple puzzle format.</p>
+          </details>
+          <details>
+            <summary>Is Blossom Word Game Good for Improving Spelling?</summary>
+            <p>Yes, playing spelling-based puzzles can help users become more familiar with words, letters, and language patterns.</p>
+          </details>
+          <details>
+            <summary>Can Children Play Blossom Word Puzzle?</summary>
+            <p>Yes, children can enjoy Blossom as a fun learning activity while developing spelling and vocabulary skills.</p>
+          </details>
+          <details>
+            <summary>Does Blossom Have Daily Puzzles?</summary>
+            <p>Daily challenges are one of the key features that keep players engaged and encourage regular practice.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="#top" aria-label="Blossom Game home">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32)"><g fill="#ff8fb3"><ellipse cx="0" cy="-16" rx="9" ry="13"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(72)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(144)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(216)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(288)"/></g><circle r="9" fill="#ffcc4d"/></g></svg>
+            <span>Blossom<b>Game</b></span>
+          </a>
+          <p>A fun, safe and educational Blossom Word Game that helps players build vocabulary, spelling and brain power — one delightful puzzle at a time.</p>
+          <div class="social">
+            <a href="#play" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H8v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6v1.9H16l-.4 2.9h-2.1v7A10 10 0 0 0 22 12z"/></svg></a>
+            <a href="#play" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+            <a href="#play" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.3 8.3L23 22h-6.8l-5-6.6L5.4 22H2.3l7.8-8.9L2 2h7l4.5 6zM17.7 20h1.7L7.4 4H5.6z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Game</h4>
+          <ul>
+            <li><a href="#play">Play Now</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#howto">How to Play</a></li>
+            <li><a href="#features">Features</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#brain">Brain &amp; Learning</a></li>
+            <li><a href="#practice">Practice</a></li>
+            <li><a href="#tips">Tips &amp; Strategies</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Important Pages</h4>
+          <ul>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/contact-us">Contact Us</a></li>
+            <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+            <li><a href="/privacy-policy">Privacy Policy</a></li>
+            <li><a href="/dmca">DMCA</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <p style="margin:0">© <span id="year">2026</span> Blossom Game. All rights reserved.</p>
+          <nav class="footer-legal" aria-label="Legal">
+            <a href="/about-us">About</a>
+            <a href="/contact-us">Contact</a>
+            <a href="/terms-and-conditions">Terms</a>
+            <a href="/privacy-policy">Privacy</a>
+            <a href="/dmca">DMCA</a>
+          </nav>
+        </div>
+        <p style="margin:0">Made with ✿ for curious minds.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

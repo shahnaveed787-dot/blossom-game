@@ -1,0 +1,73 @@
+# ==========================================================================
+# Blossom Game — Apache performance & caching config (Laragon-friendly)
+# ==========================================================================
+
+# ---- Clean, SEO-friendly URLs ----
+# Homepage lives at "/", other pages use extensionless post-name slugs
+# (e.g. /about-us, /privacy-policy). Requires mod_rewrite.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Send the homepage to the root URL (redirect /index or /index.html -> /)
+  RewriteCond %{THE_REQUEST} \s/+index(?:\.html)?[\s?] [NC]
+  RewriteRule ^ / [R=301,L]
+
+  # Redirect any explicit .html request to its clean URL (301)
+  RewriteCond %{THE_REQUEST} \s/+([^\s?]+)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # Internally serve the matching .html file for an extensionless URL
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
+
+# ---- GZIP / Deflate compression ----
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE application/manifest+json
+</IfModule>
+
+# ---- Brotli (if available) ----
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript image/svg+xml application/json
+</IfModule>
+
+# ---- Browser caching (Cache-Control + Expires) ----
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
+  ExpiresByType image/png                 "access plus 6 months"
+  ExpiresByType image/webp                "access plus 6 months"
+  ExpiresByType application/manifest+json "access plus 1 week"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(css|js|woff2|svg|png|webp)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+  # Security headers
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ---- Correct MIME types ----
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/svg+xml .svg
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# ---- Pretty defaults ----
+DirectoryIndex index.html
