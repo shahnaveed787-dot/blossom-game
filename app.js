@@ -170,7 +170,7 @@
         "Name: " + name.value.trim() + "\n" +
         "Email: " + email.value.trim() + "\n\n" +
         message.value.trim();
-      var mailto = "mailto:support@blossomgame.com?subject=" +
+      var mailto = "mailto:support@blossomgamez.com?subject=" +
         encodeURIComponent(subj) + "&body=" + encodeURIComponent(body);
 
       if (statusBox) statusBox.classList.add("show");
