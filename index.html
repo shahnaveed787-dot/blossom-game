@@ -35,9 +35,13 @@
   <meta name="twitter:description" content="Play Blossom Game online! Solve the Blossom Word Game today, enjoy the Blossom Puzzle, Blossom Daily Word Game, Word Blossom, and Wordle Blossom free." />
   <meta name="twitter:image" content="https://blossomgamez.com/assets/og-image.png" />
 
+  <!-- Speed up connection to the embedded game host -->
+  <link rel="preconnect" href="https://ouazgames.com" crossorigin />
+  <link rel="dns-prefetch" href="https://ouazgames.com" />
+
   <!-- Preload key font for fast, stable text render -->
   <link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=4" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -140,7 +144,7 @@
   <!-- ============ HEADER ============ -->
   <header class="site-header">
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="Blossom Game home">
+      <a class="brand" href="#top" aria-label="BlossomGame home">
         <svg viewBox="0 0 64 64" aria-hidden="true">
           <g transform="translate(32 32)">
             <g fill="#ff5c8a">
@@ -257,6 +261,7 @@
             src="https://ouazgames.com/wp-content/uploads/games/blossom-word/blossom-word-game.html"
             title="Blossom Word Game — play online"
             loading="lazy"
+            credentialless
             allow="fullscreen; autoplay"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -281,7 +286,7 @@
           <p style="margin-bottom:0"><strong>Play Blossom Game online</strong> and experience a modern word puzzle game that brings together entertainment, learning, and brain training in one simple platform.</p>
         </div>
         <figure class="showcase">
-          <img src="assets/blossom-game.webp" alt="blossom game" width="1024" height="1024" loading="lazy" decoding="async" />
+          <img src="assets/blossom-game.webp?v=2" alt="blossom game" width="680" height="680" loading="lazy" decoding="async" />
         </figure>
       </div>
     </section>
@@ -696,7 +701,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a class="brand" href="#top" aria-label="Blossom Game home">
+          <a class="brand" href="#top" aria-label="BlossomGame home">
             <svg viewBox="0 0 64 64" aria-hidden="true"><g transform="translate(32 32)"><g fill="#ff8fb3"><ellipse cx="0" cy="-16" rx="9" ry="13"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(72)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(144)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(216)"/><ellipse cx="0" cy="-16" rx="9" ry="13" transform="rotate(288)"/></g><circle r="9" fill="#ffcc4d"/></g></svg>
             <span>Blossom<b>Game</b></span>
           </a>
@@ -709,7 +714,7 @@
         </div>
 
         <div class="footer-col">
-          <h4>Game</h4>
+          <h3>Game</h3>
           <ul>
             <li><a href="#play">Play Now</a></li>
             <li><a href="#how">How It Works</a></li>
@@ -718,7 +723,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Learn</h4>
+          <h3>Learn</h3>
           <ul>
             <li><a href="#benefits">Benefits</a></li>
             <li><a href="#brain">Brain &amp; Learning</a></li>
@@ -727,7 +732,7 @@
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Important Pages</h4>
+          <h3>Important Pages</h3>
           <ul>
             <li><a href="/about-us">About Us</a></li>
             <li><a href="/contact-us">Contact Us</a></li>
@@ -754,6 +759,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=3" defer></script>
+  <script src="app.js?v=4" defer></script>
 </body>
 </html>
