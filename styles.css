@@ -129,10 +129,17 @@ section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
   height: 100%;
   border: 0;
 }
+/* On phones the game reflows to a tall portrait layout (~1:2),
+   so give the frame a matching portrait ratio to avoid cropping. */
+@media (max-width: 700px) {
+  .game-embed { aspect-ratio: 376 / 742; max-width: 480px; }
+}
+
 /* Fallback for browsers/contexts where aspect-ratio isn't honored:
-   keep a sensible square-ish height so the frame can never collapse. */
+   keep a sensible height so the frame can never collapse. */
 @supports not (aspect-ratio: 1) {
   .game-embed { height: min(88vw, 720px); }
+  @media (max-width: 700px) { .game-embed { height: min(197vw, 760px); } }
 }
 
 /* Play launcher (jumps to the on-page game) */
