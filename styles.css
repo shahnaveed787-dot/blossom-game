@@ -112,6 +112,7 @@ section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
 /* Embedded game section */
 .play-section { padding-block: clamp(40px, 6vw, 76px); scroll-margin-top: 90px; }
 .game-embed {
+  position: relative;
   display: block;
   width: 100%;
   max-width: 760px;
@@ -128,6 +129,49 @@ section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Click-to-play poster (mobile only; desktop loads the game directly) */
+.game-poster {
+  display: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: var(--cream, #fff7f2);
+  place-items: center;
+  z-index: 2;
+}
+.game-poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.game-poster__play {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.4rem;
+  padding-left: 4px;
+  background: linear-gradient(135deg, var(--rose, #ff5c8a), var(--purple, #7c5cff));
+  box-shadow: 0 10px 26px rgba(34, 20, 58, 0.3);
+}
+.game-poster__label {
+  position: absolute;
+  bottom: 18px;
+  padding: 7px 16px;
+  border-radius: var(--radius-pill, 999px);
+  background: rgba(20, 12, 30, 0.72);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.game-embed.loaded .game-poster { display: none; }
+@media (max-width: 700px) {
+  .game-embed:not(.loaded) .game-poster { display: grid; }
 }
 /* On phones the game reflows to a tall portrait layout (~1:2),
    so give the frame a matching portrait ratio to avoid cropping. */

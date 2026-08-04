@@ -6,6 +6,29 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  /* ---------- Embedded game loading ----------
+     Desktop keeps its current behaviour: the game loads right away.
+     On mobile we show a lightweight poster + Play button and only load the
+     third-party game (and its ad/analytics scripts) when the user taps it.
+     This keeps those heavy scripts out of the initial mobile load — a large
+     mobile performance win — without changing the desktop experience. */
+  var gameEmbed = document.querySelector(".game-embed");
+  var gameFrame = gameEmbed && gameEmbed.querySelector("iframe[data-src]");
+  if (gameFrame) {
+    var loadGame = function () {
+      if (gameFrame.getAttribute("src")) return;
+      gameFrame.src = gameFrame.getAttribute("data-src");
+      gameEmbed.classList.add("loaded");
+    };
+    var poster = gameEmbed.querySelector(".game-poster");
+    var isDesktop = window.matchMedia && window.matchMedia("(min-width: 701px)").matches;
+    if (isDesktop || !poster) {
+      loadGame();
+    } else {
+      poster.addEventListener("click", loadGame);
+    }
+  }
+
   /* ---------- Mobile menu ---------- */
   var toggle = document.querySelector(".nav-toggle");
   var menu = document.getElementById("mobileMenu");

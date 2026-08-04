@@ -41,7 +41,7 @@
 
   <!-- Preload key font for fast, stable text render -->
   <link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -257,8 +257,13 @@
           <p>Jump straight in and start connecting letters — no download and no sign-up. Play the full Blossom word puzzle right here on the page.</p>
         </div>
         <div class="game-embed">
+          <button type="button" class="game-poster" aria-label="Play the Blossom Word Game">
+            <img src="assets/blossom-game.webp?v=2" alt="" width="680" height="680" loading="lazy" decoding="async" />
+            <span class="game-poster__play" aria-hidden="true">▶</span>
+            <span class="game-poster__label">Tap to play</span>
+          </button>
           <iframe
-            src="https://ouazgames.com/wp-content/uploads/games/blossom-word/blossom-word-game.html"
+            data-src="https://ouazgames.com/wp-content/uploads/games/blossom-word/blossom-word-game.html"
             title="Blossom Word Game — play online"
             loading="lazy"
             credentialless
@@ -759,6 +764,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=4" defer></script>
+  <script src="app.js?v=6" defer></script>
 </body>
 </html>
