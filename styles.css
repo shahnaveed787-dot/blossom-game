@@ -111,24 +111,95 @@ section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
 
 /* Embedded game section */
 .play-section { padding-block: clamp(40px, 6vw, 76px); scroll-margin-top: 90px; }
+
+/* Shell wraps the frame + lightweight rating/fullscreen bar */
+.game-shell {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  border-radius: var(--radius-lg, 24px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg, 0 24px 60px rgba(34, 20, 58, 0.16));
+  background: #1e1630;
+}
 .game-embed {
   position: relative;
   display: block;
   width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
-  aspect-ratio: 806 / 774;
-  border-radius: var(--radius-lg, 24px);
-  overflow: hidden;
+  /* Desktop: landscape frame so the flower + pots sit side-by-side */
+  aspect-ratio: 16 / 10;
   background: var(--cream, #fff7f2);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-lg, 0 24px 60px rgba(34, 20, 58, 0.16));
 }
 .game-embed iframe {
   display: block;
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Static bar — CSS only (no network, no layout thrash) */
+.game-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  background: #1e1630;
+  color: #e8e0f5;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.game-bar__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffcc4d;
+  letter-spacing: 0.06em;
+}
+.game-bar__score { color: #e8e0f5; letter-spacing: 0; }
+.game-bar__likes {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #e8e0f5;
+}
+.game-bar__fs {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.game-bar__fs:hover { background: rgba(255,255,255,0.16); }
+.game-bar__fs:focus-visible { outline: 2px solid #ffcc4d; outline-offset: 2px; }
+
+/* Fullscreen: expand the shell without reloading the game */
+.game-shell:fullscreen,
+.game-shell:-webkit-full-screen {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  background: #000;
+}
+.game-shell:fullscreen .game-embed,
+.game-shell:-webkit-full-screen .game-embed {
+  flex: 1;
+  aspect-ratio: auto;
+  height: auto;
+  min-height: 0;
 }
 
 /* Click-to-play poster (mobile only; desktop loads the game directly) */
@@ -172,17 +243,15 @@ section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
 .game-embed.loaded .game-poster { display: none; }
 @media (max-width: 700px) {
   .game-embed:not(.loaded) .game-poster { display: grid; }
-}
-/* On phones the game reflows to a tall portrait layout (~1:2),
-   so give the frame a matching portrait ratio to avoid cropping. */
-@media (max-width: 700px) {
-  .game-embed { aspect-ratio: 376 / 742; max-width: 480px; }
+  /* Phones stay portrait so the game isn't cropped */
+  .game-shell { max-width: 480px; }
+  .game-embed { aspect-ratio: 376 / 742; }
+  .game-bar__fs span { display: none; }
 }
 
-/* Fallback for browsers/contexts where aspect-ratio isn't honored:
-   keep a sensible height so the frame can never collapse. */
+/* Fallback for browsers/contexts where aspect-ratio isn't honored */
 @supports not (aspect-ratio: 1) {
-  .game-embed { height: min(88vw, 720px); }
+  .game-embed { height: min(56vw, 560px); }
   @media (max-width: 700px) { .game-embed { height: min(197vw, 760px); } }
 }
 

@@ -13,6 +13,7 @@
      This keeps those heavy scripts out of the initial mobile load — a large
      mobile performance win — without changing the desktop experience. */
   var gameEmbed = document.querySelector(".game-embed");
+  var gameShell = document.querySelector(".game-shell");
   var gameFrame = gameEmbed && gameEmbed.querySelector("iframe[data-src]");
   if (gameFrame) {
     var loadGame = function () {
@@ -27,6 +28,28 @@
     } else {
       poster.addEventListener("click", loadGame);
     }
+  }
+
+  /* Fullscreen for the game shell — native API only, no extra assets */
+  var fsBtn = document.getElementById("gameFullscreen");
+  if (fsBtn && gameShell) {
+    var isFs = function () {
+      return document.fullscreenElement === gameShell || document.webkitFullscreenElement === gameShell;
+    };
+    var syncFsLabel = function () {
+      fsBtn.setAttribute("aria-label", isFs() ? "Exit full screen" : "Enter full screen");
+      var label = fsBtn.querySelector("span");
+      if (label) label.textContent = isFs() ? "Exit" : "Full screen";
+    };
+    fsBtn.addEventListener("click", function () {
+      if (isFs()) {
+        (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+      } else {
+        (gameShell.requestFullscreen || gameShell.webkitRequestFullscreen).call(gameShell);
+      }
+    });
+    document.addEventListener("fullscreenchange", syncFsLabel);
+    document.addEventListener("webkitfullscreenchange", syncFsLabel);
   }
 
   /* ---------- Mobile menu ---------- */

@@ -41,7 +41,7 @@
 
   <!-- Preload key font for fast, stable text render -->
   <link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -256,20 +256,36 @@
           <h2 id="play-title">Play Blossom Game Merriam Webster Daily Word Puzzle</h2>
           <p>You can play the Game by Merriam-Webster online as a daily word challenge. The game features a flower-shaped arrangement of seven letters where players create words using the available letters. Every word must include the center letter, and longer words earn more points. Challenge yourself daily to discover new words and improve your score.</p>
         </div>
-        <div class="game-embed">
-          <button type="button" class="game-poster" aria-label="Play the Blossom Word Game">
-            <img src="assets/blossom-game.webp?v=2" alt="" width="680" height="680" loading="lazy" decoding="async" />
-            <span class="game-poster__play" aria-hidden="true">▶</span>
-            <span class="game-poster__label">Tap to play</span>
-          </button>
-          <iframe
-            data-src="https://blossomwordgame.io/game/blossom/"
-            title="Blossom Word Game — play online"
-            loading="lazy"
-            credentialless
-            allow="fullscreen; autoplay"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="game-shell">
+          <div class="game-embed">
+            <button type="button" class="game-poster" aria-label="Play the Blossom Word Game">
+              <img src="assets/blossom-game.webp?v=2" alt="" width="680" height="680" loading="lazy" decoding="async" />
+              <span class="game-poster__play" aria-hidden="true">▶</span>
+              <span class="game-poster__label">Tap to play</span>
+            </button>
+            <iframe
+              data-src="https://blossomwordgame.io/game/blossom/"
+              title="Blossom Word Game — play online"
+              loading="lazy"
+              credentialless
+              allow="fullscreen; autoplay"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="game-bar" aria-label="Game rating and controls">
+            <div class="game-bar__stars" aria-label="Rated 5 out of 5 stars" title="5.0">
+              <span aria-hidden="true">★★★★★</span>
+              <span class="game-bar__score">5.0</span>
+            </div>
+            <div class="game-bar__likes" aria-label="1,000,000 thumbs up">
+              <span aria-hidden="true">👍</span>
+              <span>1,000,000</span>
+            </div>
+            <button type="button" class="game-bar__fs" id="gameFullscreen" aria-label="Enter full screen">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+              <span>Full screen</span>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -837,6 +853,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=7" defer></script>
+  <script src="app.js?v=8" defer></script>
 </body>
 </html>
