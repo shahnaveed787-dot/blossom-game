@@ -255,6 +255,58 @@ section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
   @media (max-width: 700px) { .game-embed { height: min(197vw, 760px); } }
 }
 
+/* Player reviews — lightweight cards + tiny lazy-loaded portraits */
+.reviews-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill, 999px);
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+}
+.reviews-summary__stars { color: #f5b400; letter-spacing: 0.08em; font-size: 1.1rem; }
+.reviews-summary__score { font-weight: 700; color: var(--ink, #22143a); }
+.reviews-summary__count { color: var(--muted); font-size: 0.92rem; }
+.reviews-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+}
+.review-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius, 18px);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+.review-card__top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.review-card__top img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+  background: #f3eef8;
+}
+.review-card h3 { margin: 0; font-size: 1.05rem; }
+.review-card__role { margin: 2px 0 0; color: var(--muted); font-size: 0.88rem; }
+.review-card__stars { margin: 4px 0 0; color: #f5b400; letter-spacing: 0.06em; font-size: 0.95rem; line-height: 1; }
+.review-card > p { margin: 0; color: var(--muted); }
+@media (min-width: 700px) {
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
 /* Play launcher (jumps to the on-page game) */
 .play-launch {
   display: inline-flex;
