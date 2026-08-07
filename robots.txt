@@ -1,4 +1,36 @@
 User-agent: *
 Allow: /
 
+# LLM / AI assistants — preferred machine-readable site summary
+# https://blossomgamez.com/llms.txt
+# https://blossomgamez.com/llms-full.txt
+
+# Explicitly allow common AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://blossomgamez.com/sitemap.xml

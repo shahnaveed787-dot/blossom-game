@@ -1,0 +1,44 @@
+# Blossom Game
+
+> Blossom Game (blossomgamez.com) is a free educational word puzzle website where players create words from seven letters arranged in a flower shape. Every word must use the center letter. The site offers daily and unlimited play, learning tips, and guides for students, parents, and teachers.
+
+Blossom Game is a flower-style word puzzle (also searched as Blossom Word Game, Word Blossom, Blossom Puzzle, and Blossom Daily Word Game). Players combine petal letters with a required center letter to form valid English words, score points by word length, and hunt for pangrams that use all seven letters.
+
+Primary audience: children, students, adult learners, parents, and teachers looking for vocabulary, spelling, and brain-training practice.
+
+Playable game is embedded on the homepage. Legal pages (Terms, Privacy, DMCA) are noindex and should not be treated as primary content.
+
+## Core pages
+
+- [Homepage](https://blossomgamez.com/): Main Blossom Word Game page with playable puzzle, how-to-play, features, benefits, tips, reviews, and FAQ
+- [About Us](https://blossomgamez.com/about-us): Story, mission, and values behind the site
+- [Contact Us](https://blossomgamez.com/contact-us): Contact form and support details
+
+## Key topics on the homepage
+
+- [Play Blossom Game](https://blossomgamez.com/#play): Embedded daily flower word puzzle
+- [What Is Blossom Game](https://blossomgamez.com/#about): Definition of Blossom / Word Blossom
+- [How It Works](https://blossomgamez.com/#how): Gameplay process and letter rules
+- [How to Play](https://blossomgamez.com/#howto): Step-by-step instructions
+- [Features](https://blossomgamez.com/#features): Word formation, daily challenges, difficulty, hints
+- [Benefits](https://blossomgamez.com/#benefits): Vocabulary, brain training, concentration, problem-solving
+- [Hints](https://blossomgamez.com/#hints): Strategies for finding more words and higher scores
+- [Solver guide](https://blossomgamez.com/#solver): How a Blossom Game solver analyzes letters
+- [Flower Word Game](https://blossomgamez.com/#flower-word-game): What Word Flower / Flower Blossom games are
+- [Daily Challenge](https://blossomgamez.com/#daily-challenge): Daily Blossom Game Challenge explanation
+- [Tips](https://blossomgamez.com/#tips): Puzzle-solving strategies
+- [Who Can Play](https://blossomgamez.com/#who): Suitability for students, adults, and casual players
+- [Reviews](https://blossomgamez.com/#reviews): Player feedback from teachers, students, parents, and learners
+- [FAQ](https://blossomgamez.com/#faq): Free play, spelling benefits, daily puzzles, and more
+
+## Resources for machines
+
+- [Full LLM context](https://blossomgamez.com/llms-full.txt): Expanded plain-text summary of the site for language models
+- [Sitemap](https://blossomgamez.com/sitemap.xml): Indexable page list for crawlers
+- [Robots](https://blossomgamez.com/robots.txt): Crawl rules
+
+## Optional
+
+- [Terms and Conditions](https://blossomgamez.com/terms-and-conditions): Legal terms (noindex)
+- [Privacy Policy](https://blossomgamez.com/privacy-policy): Privacy details (noindex)
+- [DMCA](https://blossomgamez.com/dmca): Copyright policy (noindex)
