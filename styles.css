@@ -8,9 +8,14 @@
   font-family: "Fredoka";
   font-style: normal;
   font-weight: 400 700;
-  font-display: swap;
+  /* optional = no late font swap CLS if the file misses the first paint window */
+  font-display: optional;
   src: url("assets/fonts/fredoka-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+2122, U+2212;
+  size-adjust: 102%;
+  ascent-override: 95%;
+  descent-override: 22%;
+  line-gap-override: 0%;
 }
 
 /* ---------- Design tokens ---------- */
@@ -554,10 +559,17 @@ main > section:not(.hero):not(.play-section) {
 .hero-stats .lbl { font-size: 0.9rem; color: var(--muted); }
 
 /* Interactive flower demo */
-.hero-visual { position: relative; display: flex; justify-content: center; }
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  /* Reserve space before demo petals/styles paint — reduces CLS */
+  min-height: min(480px, 92vw);
+}
 .demo-card {
   width: 100%;
   max-width: 440px;
+  min-height: 420px;
   background: var(--paper);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
@@ -593,7 +605,9 @@ main > section:not(.hero):not(.play-section) {
   position: relative;
   width: min(300px, 78vw);
   aspect-ratio: 1;
+  min-height: min(300px, 78vw);
   margin: 6px auto 14px;
+  contain: layout;
 }
 .petal-btn {
   position: absolute;

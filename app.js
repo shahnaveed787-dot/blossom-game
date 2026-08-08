@@ -195,14 +195,8 @@
       render();
     };
 
-    var narrow = window.matchMedia && window.matchMedia("(max-width: 700px)").matches;
-    if (narrow && "requestIdleCallback" in window) {
-      requestIdleCallback(initDemo, { timeout: 1800 });
-    } else if (narrow) {
-      setTimeout(initDemo, 1);
-    } else {
-      initDemo();
-    }
+    /* Init immediately so petal buttons occupy reserved flower space (avoids CLS) */
+    initDemo();
   }
 
   /* ---------- Contact form (client-side validation + mailto) ---------- */
