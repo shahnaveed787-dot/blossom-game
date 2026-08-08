@@ -104,6 +104,11 @@ p  { margin: 0 0 1em; }
 }
 
 section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
+/* Skip rendering offscreen sections until needed (helps mobile Speed Index) */
+main > section:not(.hero):not(.play-section) {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
+}
 
 .section-head { max-width: 720px; margin: 0 auto clamp(32px, 5vw, 56px); text-align: center; }
 .section-head.left { margin-inline: 0; text-align: left; }
@@ -637,6 +642,11 @@ section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
 .floaty.f1 { top: 6%; right: 4%; width: 54px; animation: bob 6s ease-in-out infinite; }
 .floaty.f2 { bottom: 8%; left: 2%; width: 42px; animation: bob 7s ease-in-out infinite 0.6s; }
 .floaty.f3 { top: 44%; right: -8px; width: 34px; animation: bob 5.5s ease-in-out infinite 1.2s; }
+/* Mobile: skip infinite animations so Speed Index isn't held open by moving pixels */
+@media (max-width: 700px) {
+  .floaty { animation: none; }
+  .strip-track { animation: none; }
+}
 
 @keyframes bob { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-14px) rotate(8deg); } }
 

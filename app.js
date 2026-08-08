@@ -18,6 +18,15 @@
   if (gameFrame) {
     var loadGame = function () {
       if (gameFrame.getAttribute("src")) return;
+      // Connect to game host only when the player actually needs the game
+      if (!document.querySelector('link[data-game-preconnect]')) {
+        var pc = document.createElement("link");
+        pc.rel = "preconnect";
+        pc.href = "https://blossomwordgame.io";
+        pc.crossOrigin = "";
+        pc.setAttribute("data-game-preconnect", "1");
+        document.head.appendChild(pc);
+      }
       gameFrame.src = gameFrame.getAttribute("data-src");
       gameEmbed.classList.add("loaded");
     };
@@ -105,81 +114,95 @@
     });
   }
 
-  /* ---------- Interactive flower demo ---------- */
+  /* ---------- Interactive flower demo ----------
+     On mobile, wait for idle so first paint / Speed Index stay fast. */
   var flower = document.getElementById("flower");
   if (flower) {
-    var LETTERS = ["G", "A", "R", "D", "E", "N"];
-    var VALID = {
-      GARDEN: 1, DANGER: 1, GANDER: 1, RANGED: 1,
-      GRADE: 1, RANGE: 1, ANGER: 1, GRAND: 1, DENAR: 1,
-      DARN: 1, DEAR: 1, READ: 1, DARE: 1, RAGE: 1, GEAR: 1,
-      GRAD: 1, RAND: 1, DEAN: 1, DEN: 1, EAR: 1, RAN: 1,
-      RAG: 1, AGE: 1, END: 1, RED: 1, AND: 1, ARE: 1,
-      EARN: 1, NEAR: 1, NERD: 1, REND: 1
-    };
-    var picked = []; // {letter, btn}
+    var initDemo = function () {
+      var LETTERS = ["G", "A", "R", "D", "E", "N"];
+      var VALID = {
+        GARDEN: 1, DANGER: 1, GANDER: 1, RANGED: 1,
+        GRADE: 1, RANGE: 1, ANGER: 1, GRAND: 1, DENAR: 1,
+        DARN: 1, DEAR: 1, READ: 1, DARE: 1, RAGE: 1, GEAR: 1,
+        GRAD: 1, RAND: 1, DEAN: 1, DEN: 1, EAR: 1, RAN: 1,
+        RAG: 1, AGE: 1, END: 1, RED: 1, AND: 1, ARE: 1,
+        EARN: 1, NEAR: 1, NERD: 1, REND: 1
+      };
+      var picked = [];
 
-    var wordEl = document.getElementById("demoWord");
-    var msgEl = document.getElementById("demoMsg");
+      var wordEl = document.getElementById("demoWord");
+      var msgEl = document.getElementById("demoMsg");
 
-    var render = function () {
-      if (picked.length === 0) {
-        wordEl.innerHTML = '<span class="placeholder">Tap petals to build a word…</span>';
-      } else {
-        wordEl.textContent = picked.map(function (p) { return p.letter; }).join("");
-      }
-    };
-    var setMsg = function (text, win) {
-      msgEl.textContent = text;
-      msgEl.classList.toggle("win", !!win);
-    };
+      var render = function () {
+        if (picked.length === 0) {
+          wordEl.innerHTML = '<span class="placeholder">Tap petals to build a word…</span>';
+        } else {
+          wordEl.textContent = picked.map(function (p) { return p.letter; }).join("");
+        }
+      };
+      var setMsg = function (text, win) {
+        msgEl.textContent = text;
+        msgEl.classList.toggle("win", !!win);
+      };
 
-    LETTERS.forEach(function (letter, i) {
-      var angle = (360 / LETTERS.length) * i;
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "petal-btn";
-      btn.style.setProperty("--a", angle + "deg");
-      btn.textContent = letter;
-      btn.setAttribute("aria-label", "Letter " + letter);
-      btn.addEventListener("click", function () {
-        if (btn.classList.contains("used")) return;
-        btn.classList.add("used");
-        picked.push({ letter: letter, btn: btn });
-        render();
-        setMsg("Keep going — then press Check.", false);
+      LETTERS.forEach(function (letter, i) {
+        var angle = (360 / LETTERS.length) * i;
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "petal-btn";
+        btn.style.setProperty("--a", angle + "deg");
+        btn.textContent = letter;
+        btn.setAttribute("aria-label", "Letter " + letter);
+        btn.addEventListener("click", function () {
+          if (btn.classList.contains("used")) return;
+          btn.classList.add("used");
+          picked.push({ letter: letter, btn: btn });
+          render();
+          setMsg("Keep going — then press Check.", false);
+        });
+        flower.appendChild(btn);
       });
-      flower.appendChild(btn);
-    });
 
-    var reset = function () {
-      picked.forEach(function (p) { p.btn.classList.remove("used"); });
-      picked = [];
+      var reset = function () {
+        picked.forEach(function (p) { p.btn.classList.remove("used"); });
+        picked = [];
+        render();
+      };
+
+      var clearBtn = document.getElementById("demoClear");
+      if (clearBtn) clearBtn.addEventListener("click", function () {
+        reset();
+        setMsg("Cleared. Build a new word!", false);
+      });
+
+      var checkBtn = document.getElementById("demoCheck");
+      if (checkBtn) checkBtn.addEventListener("click", function () {
+        var word = picked.map(function (p) { return p.letter; }).join("");
+        if (word.length < 3) { setMsg("Try a word with at least 3 letters.", false); return; }
+        if (VALID[word] === 1) {
+          setMsg("🎉 “" + word + "” is a great word! Well done.", true);
+          if (wordEl.animate) {
+            wordEl.animate(
+              [{ transform: "scale(1)" }, { transform: "scale(1.08)" }, { transform: "scale(1)" }],
+              { duration: 320, easing: "ease-out" }
+            );
+          }
+        } else {
+          setMsg("Hmm, not one we know. Try another combination!", false);
+        }
+      });
+
       render();
     };
 
-    var clearBtn = document.getElementById("demoClear");
-    if (clearBtn) clearBtn.addEventListener("click", function () {
-      reset();
-      setMsg("Cleared. Build a new word!", false);
-    });
-
-    var checkBtn = document.getElementById("demoCheck");
-    if (checkBtn) checkBtn.addEventListener("click", function () {
-      var word = picked.map(function (p) { return p.letter; }).join("");
-      if (word.length < 3) { setMsg("Try a word with at least 3 letters.", false); return; }
-      if (VALID[word] === 1) {
-        setMsg("🎉 “" + word + "” is a great word! Well done.", true);
-        wordEl.animate(
-          [{ transform: "scale(1)" }, { transform: "scale(1.08)" }, { transform: "scale(1)" }],
-          { duration: 320, easing: "ease-out" }
-        );
-      } else {
-        setMsg("Hmm, not one we know. Try another combination!", false);
-      }
-    });
-
-    render();
+    var narrow = window.matchMedia && window.matchMedia("(max-width: 700px)").matches;
+    if (narrow && "requestIdleCallback" in window) {
+      requestIdleCallback(initDemo, { timeout: 1800 });
+    } else if (narrow) {
+      setTimeout(initDemo, 1);
+    } else {
+      initDemo();
+    }
   }
 
   /* ---------- Contact form (client-side validation + mailto) ---------- */
