@@ -249,56 +249,23 @@
   }
 
   /* ---------- Reveal on scroll ----------
-     IntersectionObserver drives the animation, with a scroll/resize fallback so
-     content can never stay hidden even if the observer is throttled. */
+     IntersectionObserver only — no getBoundingClientRect (avoids forced reflow / TBT). */
   var revealEls = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
   var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var narrowView = window.matchMedia && window.matchMedia("(max-width: 700px)").matches;
 
-  if (prefersReduced || !revealEls.length) {
+  if (prefersReduced || narrowView || !revealEls.length || !("IntersectionObserver" in window)) {
+    // Mobile: show immediately (helps Speed Index; no layout thrash)
     revealEls.forEach(function (el) { el.classList.add("in"); });
   } else {
-    var pending = revealEls.slice();
-    var reveal = function (el) { el.classList.add("in"); };
-
-    // Reveal everything currently in (or near) the viewport; return remaining.
-    var flushVisible = function () {
-      pending = pending.filter(function (el) {
-        if (el.getBoundingClientRect().top < window.innerHeight - 20) {
-          reveal(el);
-          return false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
         }
-        return true;
       });
-      if (!pending.length) teardown();
-    };
-
-    var ticking = false;
-    var onScroll = function () {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(function () { ticking = false; flushVisible(); });
-    };
-    var teardown = function () {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            reveal(entry.target);
-            io.unobserve(entry.target);
-            pending = pending.filter(function (el) { return el !== entry.target; });
-          }
-        });
-      }, { rootMargin: "0px 0px -20px 0px", threshold: 0 });
-      pending.forEach(function (el) { io.observe(el); });
-    }
-
-    // Fallback listeners guarantee reveal on real scrolling.
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    flushVisible(); // above-the-fold elements
+    }, { rootMargin: "80px 0px", threshold: 0 });
+    revealEls.forEach(function (el) { io.observe(el); });
   }
 })();
