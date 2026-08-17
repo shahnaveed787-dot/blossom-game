@@ -117,13 +117,11 @@ p  { margin: 0 0 1em; }
 }
 
 section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
-/* Mobile only: skip offscreen paint for Speed Index */
-@media (max-width: 700px) {
-  main > section:not(.hero),
-  main > .strip {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 800px;
-  }
+/* Offscreen sections: skip paint for Speed Index; scrollbar-gutter avoids CLS */
+main > section:not(.hero),
+main > .strip {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
 }
 /* Desktop only: skip below-fold layout work (TBT) */
 @media (min-width: 701px) {

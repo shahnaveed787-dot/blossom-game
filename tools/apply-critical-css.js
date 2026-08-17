@@ -4,10 +4,15 @@ const path = require("path");
 const root = path.join(__dirname, "..");
 const htmlPath = path.join(root, "index.html");
 let html = fs.readFileSync(htmlPath, "utf8");
-const VER = "21";
+const VER = "22";
 
-/* Mobile ATF only — inlined for FCP/SI; wrapped so desktop cascade is unaffected (TBT). */
-const criticalInner = [
+/* Strip accidental merge conflict markers */
+html = html.replace(/^<<<<<<< HEAD[\s\S]*?=======[\s\S]*?>>>>>>>[^\n]*\n?/gm, "");
+html = html.replace(/^<<<<<<< HEAD\n?/gm, "");
+html = html.replace(/^=======[\s\S]*?>>>>>>>[^\n]*\n?/gm, "");
+
+/* Mobile ATF — inline for instant FCP/SI (no external request). */
+const critical = [
   "html{scrollbar-gutter:stable;scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:84px}",
   ':root{--rose:#ff5c8a;--rose-soft:#ff8fb3;--rose-deep:#e63e73;--purple:#7c5cff;--ink:#22143a;--muted:#5b5470;--cream:#fff9f5;--paper:#fff;--line:#f0e4ec;--shadow-sm:0 2px 8px rgba(34,20,58,.06);--radius:18px;--radius-pill:999px;--container:1160px;--gutter:clamp(16px,4vw,40px);--font:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}',
   "*,*::before,*::after{box-sizing:border-box}",
@@ -52,29 +57,27 @@ const criticalInner = [
   ".hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}",
   ".hero-stats{display:none}",
   ".reveal{opacity:1;transform:none}",
-  ".hero{min-height:calc(100vh - 68px);padding-bottom:48px}",
-  ".hero-visual,.floaty{display:none!important}",
-  "main>section:not(.hero),main>.strip{content-visibility:auto;contain-intrinsic-size:auto 800px}"
+  "@media (max-width:700px){.hero{min-height:calc(100vh - 68px);padding-bottom:48px}.hero-visual,.floaty{display:none!important}.hero-copy .lead{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}main>section:not(.hero),main>.strip{content-visibility:auto;contain-intrinsic-size:auto 800px}}"
 ].join("");
-const critical = "@media (max-width:700px){" + criticalInner + "}";
 
 const block =
   "  <!-- Mobile: inline critical CSS + async sheet. Desktop: blocking sheet (CLS). -->\n" +
   '  <link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 701px)" />\n' +
   '  <link rel="stylesheet" href="styles.min.css?v=' + VER + '" media="(min-width: 701px)" />\n' +
   "  <style>" + critical + "</style>\n" +
-  '  <link rel="stylesheet" href="styles.min.css?v=' + VER + '" media="print" id="mobilecss">\n' +
-  "  <script>(function(){function m(){var l=document.getElementById('mobilecss');if(l&&window.matchMedia('(max-width:700px)').matches)l.media='all';}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',m);else m();})();</script>\n" +
+  '  <link rel="stylesheet" href="styles.min.css?v=' + VER + '" media="print" id="fullcss">\n' +
+  "  <script>requestAnimationFrame(function(){requestAnimationFrame(function(){var l=document.getElementById('fullcss');if(l&&window.matchMedia('(max-width:700px)').matches)l.media='all';});});</script>\n" +
   '  <noscript><link rel="stylesheet" href="styles.min.css?v=' + VER + '"></noscript>\n';
 
 const markers = [
-  "<!-- Mobile: critical CSS",
   "<!-- Mobile: inline critical CSS",
+  "<!-- Mobile: critical CSS",
+  "<!-- Critical CSS + async",
   "<!-- Critical CSS",
   "<!-- Critical ATF",
   "<!-- Inlined CSS:",
   "<!-- Minified blocking",
-  "<!-- Critical CSS + deferred"
+  "<<<<<<< HEAD"
 ];
 let start = -1;
 for (const m of markers) {
@@ -87,6 +90,37 @@ for (const m of markers) {
 const end = html.indexOf("</head>");
 if (start < 0 || end < 0) throw new Error("cannot find head CSS block");
 html = html.slice(0, start) + block + html.slice(end);
+
+/* Fix app.js loader — mobile defer, desktop idle after load */
+const appLoader =
+  '  <script>\n' +
+  "    (function () {\n" +
+  '      var src = "app.js?v=' + VER + '";\n' +
+  '      if (window.matchMedia && window.matchMedia("(max-width: 700px)").matches) {\n' +
+  '        var s = document.createElement("script");\n' +
+  "        s.src = src;\n" +
+  "        s.defer = true;\n" +
+  "        document.head.appendChild(s);\n" +
+  "      } else {\n" +
+  '        window.addEventListener("load", function () {\n' +
+  "          var boot = function () {\n" +
+  '            var s = document.createElement("script");\n' +
+  "            s.src = src;\n" +
+  "            document.body.appendChild(s);\n" +
+  "          };\n" +
+  '          if ("requestIdleCallback" in window) requestIdleCallback(boot, { timeout: 5000 });\n' +
+  "          else setTimeout(boot, 1);\n" +
+  "        }, { once: true });\n" +
+  "      }\n" +
+  "    })();\n" +
+  "  </script>";
+
+html = html.replace(/<<<<<<< HEAD[\s\S]*?>>>>>>>[^\n]*\n?/g, "");
+html = html.replace(/<script src="app\.js\?v=\d+" defer><\/script>/, appLoader);
+if (!html.includes('var src = "app.js?v=' + VER)) {
+  html = html.replace(/<script>\s*\(function \(\) \{[\s\S]*?app\.js[\s\S]*?\}\)\(\);\s*<\/script>/, appLoader);
+}
+
 html = html.replace(/app\.js\?v=\d+/g, "app.js?v=" + VER);
 html = html.replace(/styles\.min\.css\?v=\d+/g, "styles.min.css?v=" + VER);
 fs.writeFileSync(htmlPath, html);
