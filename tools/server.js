@@ -2,6 +2,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const zlib = require("zlib");
 
 const ROOT = path.resolve(__dirname, "..");
 const PORT = process.env.PORT || 5177;
@@ -14,14 +15,27 @@ const TYPES = {
   ".webmanifest": "application/manifest+json; charset=utf-8",
   ".svg": "image/svg+xml",
   ".png": "image/png",
+  ".webp": "image/webp",
   ".woff2": "font/woff2",
   ".xml": "application/xml; charset=utf-8",
   ".txt": "text/plain; charset=utf-8"
 };
 
-const send = (res, filePath, data) => {
+const COMPRESSIBLE = new Set([
+  ".html", ".css", ".js", ".json", ".svg", ".xml", ".txt", ".webmanifest"
+]);
+
+const send = (req, res, filePath, data) => {
   const ext = path.extname(filePath).toLowerCase();
-  res.writeHead(200, { "Content-Type": TYPES[ext] || "application/octet-stream" });
+  const headers = { "Content-Type": TYPES[ext] || "application/octet-stream" };
+  const accept = req.headers["accept-encoding"] || "";
+  if (COMPRESSIBLE.has(ext) && /\bgzip\b/.test(accept) && data.length > 1024) {
+    headers["Content-Encoding"] = "gzip";
+    headers["Vary"] = "Accept-Encoding";
+    data = zlib.gzipSync(data);
+  }
+  headers["Content-Length"] = data.length;
+  res.writeHead(200, headers);
   res.end(data);
 };
 
@@ -29,8 +43,6 @@ http
   .createServer((req, res) => {
     let urlPath = decodeURIComponent(req.url.split("?")[0]);
 
-    // Mirror .htaccess clean-URL behaviour for local testing:
-    // redirect /index(.html) -> / and /page.html -> /page
     if (/^\/index(?:\.html)?$/.test(urlPath)) {
       res.writeHead(301, { Location: "/" });
       return res.end();
@@ -50,12 +62,11 @@ http
     }
 
     fs.readFile(filePath, (err, data) => {
-      if (!err) return send(res, filePath, data);
-      // Extensionless URL -> try the matching .html file
+      if (!err) return send(req, res, filePath, data);
       if (!path.extname(filePath)) {
         const htmlPath = filePath.replace(/[\\/]?$/, "") + ".html";
         return fs.readFile(htmlPath, (e2, d2) => {
-          if (!e2) return send(res, htmlPath, d2);
+          if (!e2) return send(req, res, htmlPath, d2);
           res.writeHead(404, { "Content-Type": "text/plain" });
           res.end("Not found: " + urlPath);
         });

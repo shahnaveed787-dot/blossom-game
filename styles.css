@@ -3,19 +3,20 @@
    Mobile-first, performance-focused. No external dependencies.
    ========================================================================== */
 
-/* Self-hosted display font (variable, single file for all weights) */
-@font-face {
-  font-family: "Fredoka";
-  font-style: normal;
-  font-weight: 400 700;
-  /* optional = no late font swap CLS if the file misses the first paint window */
-  font-display: optional;
-  src: url("assets/fonts/fredoka-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+2122, U+2212;
-  size-adjust: 102%;
-  ascent-override: 95%;
-  descent-override: 22%;
-  line-gap-override: 0%;
+/* Desktop-only display font — mobile keeps system UI fonts (faster Speed Index, no swap). */
+@media (min-width: 701px) {
+  @font-face {
+    font-family: "Fredoka";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: optional;
+    src: url("assets/fonts/fredoka-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+2122, U+2212;
+    size-adjust: 102%;
+    ascent-override: 95%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+  }
 }
 
 /* ---------- Design tokens ---------- */
@@ -45,7 +46,13 @@
   --container: 1160px;
   --gutter: clamp(16px, 4vw, 40px);
 
-  --font: "Fredoka", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* Mobile default: system fonts. Fredoka from 701px up. */
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+@media (min-width: 701px) {
+  :root {
+    --font: "Fredoka", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
 }
 
 /* ---------- Reset / base ---------- */
@@ -55,6 +62,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: 84px;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -109,10 +117,11 @@ p  { margin: 0 0 1em; }
 }
 
 section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
-/* Skip rendering offscreen sections until needed (helps mobile Speed Index) */
-main > section:not(.hero):not(.play-section) {
+/* Offscreen sections: skip paint for Speed Index; scrollbar-gutter avoids CLS */
+main > section:not(.hero),
+main > .strip {
   content-visibility: auto;
-  contain-intrinsic-size: 1px 720px;
+  contain-intrinsic-size: auto 800px;
 }
 
 .section-head { max-width: 720px; margin: 0 auto clamp(32px, 5vw, 56px); text-align: center; }
@@ -400,7 +409,6 @@ main > section:not(.hero):not(.play-section) {
   text-align: center;
   transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
   box-shadow: 0 8px 20px rgba(255, 92, 138, 0.35);
-  will-change: transform;
 }
 .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(255, 92, 138, 0.45); }
 .btn:active { transform: translateY(0); }
@@ -433,9 +441,15 @@ main > section:not(.hero):not(.play-section) {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 249, 245, 0.85);
-  backdrop-filter: saturate(140%) blur(12px);
+  background: rgba(255, 249, 245, 0.94);
   border-bottom: 1px solid var(--line);
+  contain: layout;
+}
+@media (min-width: 701px) {
+  .site-header {
+    background: rgba(255, 249, 245, 0.85);
+    backdrop-filter: saturate(140%) blur(12px);
+  }
 }
 .nav {
   display: flex;
@@ -539,16 +553,28 @@ main > section:not(.hero):not(.play-section) {
 .hero-copy .eyebrow { margin-bottom: 18px; }
 .hero h1 { margin-bottom: 18px; }
 .hero h1 .grad {
-  background: linear-gradient(120deg, var(--rose), var(--purple));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--rose-deep);
 }
-.hero-copy .lead { max-width: 560px; }
+@media (min-width: 701px) {
+  .hero h1 .grad {
+    background: linear-gradient(120deg, var(--rose), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+.hero-copy .lead {
+  max-width: 560px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
 .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
 
+/* Mobile-first: hide stats in first viewport (Speed Index); show from 701px */
 .hero-stats {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 26px 40px;
   margin-top: 34px;
@@ -557,14 +583,26 @@ main > section:not(.hero):not(.play-section) {
 }
 .hero-stats .num { font-size: 1.7rem; font-weight: 700; color: var(--rose-deep); line-height: 1; }
 .hero-stats .lbl { font-size: 0.9rem; color: var(--muted); }
+@media (min-width: 701px) {
+  .hero-stats { display: flex; }
+  .hero-copy .lead {
+    display: block;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+  }
+}
 
 /* Interactive flower demo */
+/* Interactive flower demo — empty on mobile (display:none); desktop stamps template */
 .hero-visual {
   position: relative;
   display: flex;
   justify-content: center;
-  /* Reserve space before demo petals/styles paint — reduces CLS */
-  min-height: min(480px, 92vw);
+}
+@media (min-width: 701px) {
+  .hero-visual {
+    min-height: min(480px, 92vw);
+  }
 }
 .demo-card {
   width: 100%;
@@ -652,14 +690,31 @@ main > section:not(.hero):not(.play-section) {
 .demo-actions { display: flex; gap: 10px; }
 .demo-actions .btn { flex: 1; min-height: 46px; padding: 12px 16px; font-size: 0.98rem; }
 
-.floaty { position: absolute; opacity: 0.85; z-index: 0; pointer-events: none; }
-.floaty.f1 { top: 6%; right: 4%; width: 54px; animation: bob 6s ease-in-out infinite; }
-.floaty.f2 { bottom: 8%; left: 2%; width: 42px; animation: bob 7s ease-in-out infinite 0.6s; }
-.floaty.f3 { top: 44%; right: -8px; width: 34px; animation: bob 5.5s ease-in-out infinite 1.2s; }
-/* Mobile: skip infinite animations so Speed Index isn't held open by moving pixels */
+.floaty { position: absolute; opacity: 0.85; z-index: 0; pointer-events: none; display: none; }
+.floaty.f1 { top: 6%; right: 4%; width: 54px; }
+.floaty.f2 { bottom: 8%; left: 2%; width: 42px; }
+.floaty.f3 { top: 44%; right: -8px; width: 34px; }
+/* Mobile: hide demo + floaties so first viewport matches critical CSS (Speed Index) */
 @media (max-width: 700px) {
-  .floaty { animation: none; }
-  .strip-track { animation: none; }
+  .hero {
+    min-height: calc(100svh - 68px);
+    min-height: calc(100vh - 68px);
+    padding-bottom: 48px;
+  }
+  .hero-visual { display: none; }
+  .hero-stats { display: none; }
+  .hero-copy .lead {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+}
+@media (min-width: 701px) {
+  .floaty { display: block; }
+  .floaty.f1 { animation: bob 6s ease-in-out infinite; }
+  .floaty.f2 { animation: bob 7s ease-in-out infinite 0.6s; }
+  .floaty.f3 { animation: bob 5.5s ease-in-out infinite 1.2s; }
 }
 
 @keyframes bob { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-14px) rotate(8deg); } }
@@ -670,8 +725,10 @@ main > section:not(.hero):not(.play-section) {
   display: flex;
   gap: 40px;
   width: max-content;
-  animation: marquee 32s linear infinite;
   white-space: nowrap;
+}
+@media (min-width: 701px) {
+  .strip-track { animation: marquee 32s linear infinite; }
 }
 .strip-track span { display: inline-flex; align-items: center; gap: 12px; font-weight: 500; opacity: 0.92; }
 .strip-track span::before { content: "✿"; color: var(--rose-soft); }
@@ -937,9 +994,12 @@ main > section:not(.hero):not(.play-section) {
 .social a:hover { background: var(--rose); transform: translateY(-2px); }
 .social svg { width: 20px; height: 20px; }
 
-/* ---------- Reveal on scroll ---------- */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.reveal.in { opacity: 1; transform: none; }
+/* ---------- Reveal on scroll (desktop only — mobile stays painted for Speed Index) ---------- */
+.reveal { opacity: 1; transform: none; }
+@media (min-width: 701px) {
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+}
 
 /* ---------- Responsive ---------- */
 @media (min-width: 640px) {

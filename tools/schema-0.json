@@ -1,0 +1,92 @@
+
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://blossomgamez.com/#organization",
+        "name": "Blossom Game",
+        "url": "https://blossomgamez.com/",
+        "logo": "https://blossomgamez.com/assets/favicon.svg",
+        "description": "Blossom Game is a fun, safe and educational word puzzle platform that helps players build vocabulary, spelling and brain power."
+      },
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://blossomgamez.com/#eduorg",
+        "name": "Blossom Game",
+        "url": "https://blossomgamez.com/",
+        "description": "An educational word game platform supporting vocabulary development, spelling practice and brain training for children, students, parents and teachers."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://blossomgamez.com/#website",
+        "url": "https://blossomgamez.com/",
+        "name": "Blossom Game",
+        "publisher": { "@id": "https://blossomgamez.com/#organization" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://blossomgamez.com/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "VideoGame",
+        "@id": "https://blossomgamez.com/#game",
+        "name": "Blossom Word Game",
+        "alternateName": ["Blossom Game", "Blossom Word Puzzle"],
+        "url": "https://blossomgamez.com/",
+        "image": "https://blossomgamez.com/assets/og-image.png",
+        "description": "Blossom Word Game is an interactive word puzzle where players connect letters to build words, complete daily challenges and improve vocabulary while training the brain.",
+        "genre": ["Word Puzzle", "Educational Game", "Brain Game"],
+        "gamePlatform": ["Web Browser", "Mobile", "Tablet", "Desktop"],
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any (Web Browser)",
+        "publisher": { "@id": "https://blossomgamez.com/#organization" },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "2143",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://blossomgamez.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is Blossom Game free to play?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, Blossom Game is designed as an accessible word puzzle experience where players can enjoy challenging puzzles without complicated requirements." }
+          },
+          {
+            "@type": "Question",
+            "name": "What makes Blossom different from other word games?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Blossom combines vocabulary improvement, creative thinking and daily challenges in a simple puzzle format." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Blossom Word Game good for improving spelling?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, playing spelling-based puzzles can help users become more familiar with words, letters and language patterns." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can children play Blossom Word Puzzle?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, children can enjoy Blossom as a fun learning activity while developing spelling and vocabulary skills." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Blossom have daily puzzles?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Daily challenges are one of the key features that keep players engaged and encourage regular practice." }
+          }
+        ]
+      }
+    ]
+  }
+  
