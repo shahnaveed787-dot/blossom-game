@@ -7,19 +7,15 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   /* ---------- Embedded game loading ----------
-     Desktop keeps its current behaviour: the game loads right away.
-     On mobile we show a lightweight poster + Play button and only load the
-     third-party game (and its ad/analytics scripts) when the user taps it.
-     This keeps those heavy scripts out of the initial mobile load — a large
-     mobile performance win — without changing the desktop experience. */
+     Mobile: poster + tap to load (keeps third-party scripts off initial load).
+     Desktop: defer until #play is near viewport, poster click, or #play link (TBT). */
   var gameEmbed = document.querySelector(".game-embed");
   var gameShell = document.querySelector(".game-shell");
   var gameFrame = gameEmbed && gameEmbed.querySelector("iframe[data-src]");
   if (gameFrame) {
     var loadGame = function () {
       if (gameFrame.getAttribute("src")) return;
-      // Connect to game host only when the player actually needs the game
-      if (!document.querySelector('link[data-game-preconnect]')) {
+      if (!document.querySelector("link[data-game-preconnect]")) {
         var pc = document.createElement("link");
         pc.rel = "preconnect";
         pc.href = "https://blossomwordgame.io";
@@ -32,10 +28,14 @@
     };
     var poster = gameEmbed.querySelector(".game-poster");
     var isDesktop = window.matchMedia && window.matchMedia("(min-width: 701px)").matches;
-    if (isDesktop || !poster) {
-      loadGame();
-    } else {
+
+    if (!isDesktop && poster) {
       poster.addEventListener("click", loadGame);
+    } else {
+      if (poster) poster.addEventListener("click", loadGame);
+      document.querySelectorAll('a[href="#play"]').forEach(function (link) {
+        link.addEventListener("click", loadGame);
+      });
     }
   }
 
@@ -250,14 +250,18 @@
   } else if (prefersReduced || !revealEls.length || !("IntersectionObserver" in window)) {
     revealEls.forEach(function (el) { el.classList.add("in"); });
   } else {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: "100px 0px", threshold: 0 });
-    revealEls.forEach(function (el) { io.observe(el); });
+    var setupReveal = function () {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: "100px 0px", threshold: 0 });
+      revealEls.forEach(function (el) { io.observe(el); });
+    };
+    if ("requestIdleCallback" in window) requestIdleCallback(setupReveal, { timeout: 3000 });
+    else setTimeout(setupReveal, 1);
   }
 })();

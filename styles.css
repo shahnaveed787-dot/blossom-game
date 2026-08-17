@@ -125,6 +125,14 @@ section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
     contain-intrinsic-size: auto 800px;
   }
 }
+/* Desktop only: skip below-fold layout work (TBT) */
+@media (min-width: 701px) {
+  main > section:not(.hero),
+  main > .strip {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+  }
+}
 
 .section-head { max-width: 720px; margin: 0 auto clamp(32px, 5vw, 56px); text-align: center; }
 .section-head.left { margin-inline: 0; text-align: left; }
@@ -223,7 +231,7 @@ section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
   min-height: 0;
 }
 
-/* Click-to-play poster (mobile only; desktop loads the game directly) */
+/* Click-to-play poster — mobile always; desktop until game is loaded (TBT) */
 .game-poster {
   display: none;
   position: absolute;
@@ -262,6 +270,9 @@ section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
   font-size: 0.9rem;
 }
 .game-embed.loaded .game-poster { display: none; }
+@media (min-width: 701px) {
+  .game-embed:not(.loaded) .game-poster { display: grid; }
+}
 @media (max-width: 700px) {
   .game-embed:not(.loaded) .game-poster { display: grid; }
   /* Phones stay portrait so the game isn't cropped */

@@ -5,14 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#ff5c8a" />
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8NFFZSH23C"></script>
+  <!-- Google tag (gtag.js) — desktop deferred (TBT); mobile async unchanged -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-8NFFZSH23C');
+    (function () {
+      var id = "G-8NFFZSH23C";
+      var src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+      if (window.matchMedia && window.matchMedia("(min-width: 701px)").matches) {
+        window.addEventListener("load", function () {
+          setTimeout(function () {
+            var s = document.createElement("script");
+            s.async = true;
+            s.src = src;
+            s.onload = function () { gtag("js", new Date()); gtag("config", id); };
+            document.head.appendChild(s);
+          }, 3000);
+        }, { once: true });
+      } else {
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = src;
+        document.head.appendChild(s);
+        gtag("js", new Date());
+        gtag("config", id);
+      }
+    })();
   </script>
 
   <title>Terms &amp; Conditions | Blossom Game</title>
@@ -32,7 +50,7 @@
   <meta property="og:image" content="https://blossomgamez.com/assets/og-image.png" />
 
   <link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 701px)" />
-  <link rel="stylesheet" href="styles.min.css?v=18" />
+  <link rel="stylesheet" href="styles.min.css?v=20" />
 </head>
 
 <body>
@@ -208,6 +226,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=18" defer></script>
+  <script src="app.js?v=20" defer></script>
 </body>
 </html>
