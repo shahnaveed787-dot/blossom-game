@@ -1066,7 +1066,7 @@ main > .strip {
 }
 .breadcrumb li { display: inline-flex; align-items: center; gap: 6px; }
 .breadcrumb li:not(:last-child)::after { content: "›"; color: var(--rose); margin-left: 6px; }
-.breadcrumb a { color: var(--rose-deep); font-weight: 500; }
+.breadcrumb a { color: #a3164f; font-weight: 500; }
 .breadcrumb a:hover { text-decoration: underline; }
 
 /* Legal / article prose */

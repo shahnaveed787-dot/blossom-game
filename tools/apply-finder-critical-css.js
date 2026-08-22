@@ -3,7 +3,7 @@ const path = require("path");
 
 const root = path.join(__dirname, "..");
 const htmlPath = path.join(root, "blossom-word-finder.html");
-const VER = "24";
+const VER = "26";
 let html = fs.readFileSync(htmlPath, "utf8");
 html = html.replace(/\r\n/g, "\n");
 
@@ -14,12 +14,12 @@ const base = [
   "body{margin:0;font-family:var(--font);font-weight:400;font-size:clamp(1rem,.96rem + .2vw,1.08rem);line-height:1.65;color:var(--ink);background:var(--cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}",
   "img,svg{max-width:100%;height:auto;display:block}",
   "a{color:inherit;text-decoration:none}",
-  "h1{font-size:clamp(2rem,1.4rem + 2.6vw,3.2rem);font-weight:700;line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}",
+  "h1{font-size:clamp(1.85rem,1.2rem + 2.2vw,3.2rem);font-weight:700;line-height:1.15;margin:0 0 .5em;letter-spacing:-.01em}",
   "h2{font-size:clamp(1.35rem,1rem + 1.4vw,1.85rem);margin:0 0 8px}",
   "p{margin:0 0 1em}",
   ".skip-link{position:absolute;left:50%;transform:translateX(-50%) translateY(-140%);top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 18px;border-radius:var(--radius-pill)}",
   ".container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}",
-  "section{padding-block:clamp(56px,8vw,110px);position:relative}",
+  "section{padding-block:clamp(40px,6vw,110px);position:relative}",
   ".site-header{position:sticky;top:0;z-index:100;background:rgba(255,249,245,.94);border-bottom:1px solid var(--line);contain:layout}",
   ".nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}",
   ".brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.25rem;color:var(--ink)}",
@@ -31,17 +31,19 @@ const base = [
   ".nav-toggle{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:46px;height:46px;padding:0;border:2px solid var(--line);background:#fff;border-radius:14px;cursor:pointer}",
   ".nav-toggle span{display:block;width:22px;height:2.5px;margin-inline:auto;background:var(--ink);border-radius:2px}",
   ".mobile-menu{display:grid;grid-template-rows:0fr;background:var(--cream);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:99}",
+  ".mobile-menu.open{grid-template-rows:1fr}",
   ".mobile-menu>div{overflow:hidden}",
   ".btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:inherit;font-size:1.02rem;font-weight:600;line-height:1;padding:15px 28px;min-height:52px;border:none;border-radius:var(--radius-pill);background:var(--rose);color:#fff;cursor:pointer;box-shadow:0 8px 20px rgba(255,92,138,.35);text-align:center}",
   ".btn--primary{background:linear-gradient(135deg,var(--rose-soft),var(--rose))}",
-  ".btn--ghost{background:transparent;color:var(--rose-deep);box-shadow:none;border:2px solid var(--line)}",
-  ".page-hero{padding-block:clamp(40px,7vw,72px);text-align:center;background:radial-gradient(800px 360px at 78% -20%,#ffe3ef 0%,rgba(255,227,239,0) 60%),radial-gradient(700px 360px at 10% 0%,#e7efff 0%,rgba(231,239,255,0) 55%),var(--cream);border-bottom:1px solid var(--line)}",
-  ".page-hero p{color:var(--muted);max-width:620px;margin:0 auto;font-size:1.08em}",
-  ".breadcrumb{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;list-style:none;margin:0 0 18px;padding:0;font-size:.9rem;color:var(--muted)}",
+  ".btn--ghost{background:transparent;color:#a3164f;box-shadow:none;border:2px solid var(--line)}",
+  ".page-hero{padding-block:clamp(28px,5vw,72px);text-align:center;background:var(--cream);border-bottom:1px solid var(--line)}",
+  ".page-hero p{color:var(--muted);max-width:620px;margin:0 auto;font-size:1.05em}",
+  ".page-hero a{color:#a3164f;font-weight:500;text-decoration:underline;text-underline-offset:2px}",
+  ".breadcrumb{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;list-style:none;margin:0 0 14px;padding:0;font-size:.9rem;color:var(--muted)}",
   ".breadcrumb li{display:inline-flex;align-items:center;gap:6px}",
   ".breadcrumb li:not(:last-child)::after{content:'›';color:var(--rose);margin-left:6px}",
-  ".breadcrumb a{color:var(--rose-deep);font-weight:500}",
-  ".finder-section{padding-block:clamp(32px,5vw,56px);background:radial-gradient(900px 420px at 50% -10%,rgba(255,143,179,.18) 0%,rgba(255,143,179,0) 62%),var(--cream)}",
+  ".breadcrumb a{color:#a3164f;font-weight:500}",
+  ".finder-section{padding-block:clamp(24px,4vw,56px);background:var(--cream)}",
   ".finder-card{max-width:720px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:clamp(22px,4vw,36px)}",
   ".finder-card__head{text-align:center;margin-bottom:clamp(20px,3vw,28px)}",
   ".finder-card__head p{margin:0;color:var(--muted);font-size:.98rem}",
@@ -52,7 +54,7 @@ const base = [
   ".finder-petal--0{top:6%;left:50%}.finder-petal--1{top:22%;left:84%}.finder-petal--2{top:72%;left:84%}",
   ".finder-petal--3{top:94%;left:50%}.finder-petal--4{top:72%;left:16%}.finder-petal--5{top:22%;left:16%}",
   ".finder-center-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;z-index:2}",
-  ".finder-center-label{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--rose-deep);background:rgba(255,249,245,.92);padding:2px 10px;border-radius:var(--radius-pill);border:1px solid rgba(255,92,138,.25)}",
+  ".finder-center-label{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#a3164f;background:rgba(255,249,245,.92);padding:2px 10px;border-radius:var(--radius-pill);border:1px solid rgba(255,92,138,.25)}",
   ".finder-center{width:clamp(56px,15vw,68px);height:clamp(56px,15vw,68px);border-color:var(--rose);background:linear-gradient(145deg,#fff6dc,#ffe9a8);color:var(--rose-deep);font-size:clamp(1.45rem,4vw,1.85rem);box-shadow:0 8px 22px rgba(255,92,138,.18)}",
   ".finder-controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:18px}",
   ".finder-options{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:center;padding:14px 16px;margin-bottom:18px;background:rgba(255,249,245,.85);border:1px solid var(--line);border-radius:var(--radius)}",
@@ -62,11 +64,13 @@ const base = [
   ".finder-status{min-height:1.4em;text-align:center;font-size:.92rem;color:var(--muted);margin-bottom:8px}",
   ".finder-rules{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted);text-align:center}",
   ".finder-rules strong{color:var(--rose-deep)}",
-  "@media (max-width:700px){.page-hero{padding-block:clamp(32px,5vw,48px)}main>section:not(.page-hero):not(.finder-section),.site-footer,.finder-section .showcase{content-visibility:auto;contain-intrinsic-size:auto 800px}}"
+  "[hidden]{display:none!important}",
+  "@media (max-width:700px){main>section:not(.page-hero):not(.finder-section),.site-footer,.finder-section .showcase{content-visibility:auto;contain-intrinsic-size:auto 800px}}"
 ];
 
 const cssBlock =
-  "  <!-- Mobile: inline critical CSS + async sheet. Desktop: blocking sheet (CLS). -->\n" +
+  "  <!-- Mobile: inline critical CSS + deferred full sheet. Desktop: blocking sheet (CLS). -->\n" +
+  '  <link rel="preload" href="styles.min.css?v=' + VER + '" as="style" media="(max-width:700px)" />\n' +
   '  <link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 701px)" />\n' +
   '  <link rel="stylesheet" href="styles.min.css?v=' + VER + '" media="(min-width: 701px)" />\n' +
   "  <style>" + base.join("") + "</style>\n" +
@@ -74,46 +78,36 @@ const cssBlock =
   "  <script>requestAnimationFrame(function(){requestAnimationFrame(function(){var l=document.getElementById('fullcss');if(l&&window.matchMedia('(max-width:700px)').matches)l.media='all';});});</script>\n" +
   '  <noscript><link rel="stylesheet" href="styles.min.css?v=' + VER + '"></noscript>\n';
 
-html = html.replace(
-  '  <link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 701px)" />\n  <link rel="stylesheet" href="styles.min.css?v=' + VER + '" />\n\n',
-  cssBlock + "\n"
-);
+/* Remove any analytics block from head */
+html = html.replace(/  <!-- Google tag[\s\S]*?<\/script>\n\n/g, "");
 
-const gaBlock =
-  "  <!-- Google tag — deferred until after load (FCP/LCP + Best Practices) -->\n" +
-  "  <script>\n" +
-  "    window.dataLayer = window.dataLayer || [];\n" +
-  "    function gtag(){dataLayer.push(arguments);}\n" +
-  "    window.addEventListener('load', function () {\n" +
-  "      setTimeout(function () {\n" +
-  "        var id = 'G-8NFFZSH23C';\n" +
-  "        var s = document.createElement('script');\n" +
-  "        s.async = true;\n" +
-  "        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;\n" +
-  "        s.onload = function () { gtag('js', new Date()); gtag('config', id); };\n" +
-  "        document.head.appendChild(s);\n" +
-  "      }, 2500);\n" +
-  "    }, { once: true });\n" +
-  "  </script>\n";
+/* Replace CSS loading block (supports first run or re-run) */
+if (html.includes("<!-- Mobile: inline critical CSS")) {
+  html = html.replace(
+    /  <!-- Mobile: inline critical CSS[\s\S]*?<noscript><link rel="stylesheet" href="styles\.min\.css\?v=\d+"><\/noscript>\n\n/,
+    cssBlock + "\n"
+  );
+} else {
+  html = html.replace(
+    /  <link rel="preload" href="assets\/fonts\/fredoka-latin\.woff2"[\s\S]*?<link rel="stylesheet" href="styles\.min\.css\?v=\d+"[^>]*\/>\n\n/,
+    cssBlock + "\n"
+  );
+}
 
-html = html.replace(
-  /  <!-- Google tag \(gtag\.js\)[\s\S]*?<\/script>\n\n/,
-  gaBlock + "\n"
-);
-
-html = html.replace(
-  /  <script type="application\/ld\+json">[\s\S]*?<\/script>\n/,
-  ""
-);
+/* Remove JSON-LD from head if present */
+html = html.replace(/  <script type="application\/ld\+json">[\s\S]*?<\/script>\n(?=<\/head>)/, "");
 
 const ldJson =
   "  <script type=\"application/ld+json\">\n" +
   "  {\n" +
   '    "@context": "https://schema.org",\n' +
-  '    "@type": "WebPage",\n' +
-  '    "name": "Blossom Word Finder & Solver",\n' +
+  '    "@type": "WebApplication",\n' +
+  '    "name": "Blossom Word Finder",\n' +
   '    "url": "https://blossomgamez.com/blossom-word-finder",\n' +
-  '    "description": "Free Blossom word finder and solver for today\'s Merriam-Webster puzzle.",\n' +
+  '    "applicationCategory": "GameApplication",\n' +
+  '    "operatingSystem": "Web browser",\n' +
+  '    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },\n' +
+  '    "description": "Free Blossom word finder and solver for Merriam-Webster Blossom puzzles.",\n' +
   '    "publisher": {\n' +
   '      "@type": "Organization",\n' +
   '      "name": "Blossom Game",\n' +
@@ -123,53 +117,60 @@ const ldJson =
   "  }\n" +
   "  </script>\n";
 
-const scriptBlock =
-  "  <script>\n" +
-  "    (function () {\n" +
-  '      var appSrc = "app.js?v=' + VER + '";\n' +
-  '      var finderSrc = "blossom-finder.js?v=' + VER + '";\n' +
-  "      function loadFinder() {\n" +
-  '        if (!document.getElementById("blossomFinder")) return;\n' +
-  '        var s = document.createElement("script");\n' +
-  "        s.src = finderSrc;\n" +
-  "        s.defer = true;\n" +
-  "        document.body.appendChild(s);\n" +
-  "      }\n" +
-  '      if (window.matchMedia && window.matchMedia("(max-width: 700px)").matches) {\n' +
-  '        var a = document.createElement("script");\n' +
-  "        a.src = appSrc;\n" +
-  "        a.defer = true;\n" +
-  "        document.head.appendChild(a);\n" +
-  '        if ("requestIdleCallback" in window) requestIdleCallback(loadFinder, { timeout: 2500 });\n' +
-  '        else document.addEventListener("DOMContentLoaded", loadFinder);\n' +
-  "      } else {\n" +
-  '        window.addEventListener("load", function () {\n' +
-  "          var boot = function () {\n" +
-  '            var a = document.createElement("script");\n' +
-  "            a.src = appSrc;\n" +
-  "            document.body.appendChild(a);\n" +
-  "            loadFinder();\n" +
-  "          };\n" +
-  '          if ("requestIdleCallback" in window) requestIdleCallback(boot, { timeout: 5000 });\n' +
-  "          else setTimeout(boot, 1);\n" +
-  "        }, { once: true });\n" +
-  "      }\n" +
-  "    })();\n" +
+const faqLdJson =
+  "  <script type=\"application/ld+json\">\n" +
+  "  {\n" +
+  '    "@context": "https://schema.org",\n' +
+  '    "@type": "FAQPage",\n' +
+  '    "mainEntity": [\n' +
+  '      {"@type":"Question","name":"Is the Blossom word finder free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes. There is no sign-up, no download, and no limit on how many times you can use it per day."}},\n' +
+  '      {"@type":"Question","name":"Does the word finder work for every day\'s puzzle?","acceptedAnswer":{"@type":"Answer","text":"Yes — enter whatever seven letters and center letter you are seeing and the tool works the same way regardless of the date."}},\n' +
+  '      {"@type":"Question","name":"What is the difference between a hint and a full answer?","acceptedAnswer":{"@type":"Answer","text":"A hint gives a partial nudge without revealing the whole word. The word finder gives the complete list of valid words for your letters."}}\n' +
+  "    ]\n" +
+  "  }\n" +
   "  </script>\n";
 
+const scriptBlock =
+  ldJson +
+  faqLdJson +
+  '  <script src="finder-page.js?v=' + VER + '" defer data-finder-src="blossom-finder.js?v=' + VER + '"></script>\n';
+
 html = html.replace(
-  '  <script src="app.js?v=' + VER + '" defer></script>\n  <script src="blossom-finder.js?v=' + VER + '" defer></script>\n',
-  ldJson + scriptBlock
+  /  <script type="application\/ld\+json">[\s\S]*?<\/script>\n  <script>\n    \(function \(\) \{[\s\S]*?\}\)\(\);\n  <\/script>\n/,
+  scriptBlock
+);
+
+html = html.replace(
+  /(?:  <script type="application\/ld\+json">[\s\S]*?<\/script>\n)+  <script src="finder-page\.js\?v=\d+" defer data-finder-src="blossom-finder\.js\?v=\d+"><\/script>\n/,
+  scriptBlock
 );
 
 html = html.replace(/styles\.min\.css\?v=\d+/g, "styles.min.css?v=" + VER);
 html = html.replace(/blossom-finder\.js\?v=\d+/g, "blossom-finder.js?v=" + VER);
-html = html.replace(/app\.js\?v=\d+/g, "app.js?v=" + VER);
+html = html.replace(/finder-page\.js\?v=\d+/g, "finder-page.js?v=" + VER);
+
+if (!html.includes("fetchpriority=\"low\"")) {
+  html = html.replace(
+    '<img src="assets/blossom-word-finder.webp" alt="blossom word finder" width="680" height="680" loading="lazy" decoding="async" />',
+    '<img src="assets/blossom-word-finder.webp" alt="blossom word finder" width="680" height="680" loading="lazy" decoding="async" fetchpriority="low" />'
+  );
+}
+
+/* Accessibility: associate hint select with label */
+html = html.replace(
+  '<select id="finderHintStyle" disabled>',
+  '<select id="finderHintStyle" name="hintStyle" disabled aria-label="Hint display style">'
+);
 
 html = html.replace(
-  '<img src="assets/blossom-word-finder.webp" alt="blossom word finder" width="680" height="680" loading="lazy" decoding="async" />',
-  '<img src="assets/blossom-word-finder.webp" alt="blossom word finder" width="680" height="680" loading="lazy" decoding="async" fetchpriority="low" />'
+  'href="/#play" aria-label="Instagram"',
+  'href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram (opens in new tab)"'
+);
+
+html = html.replace(
+  'href="/#play" aria-label="X"',
+  'href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="X (opens in new tab)"'
 );
 
 fs.writeFileSync(htmlPath, html.replace(/\n/g, "\r\n"));
-console.log("finder critical applied", base.join("").length, "v=" + VER);
+console.log("finder page optimized", base.join("").length, "v=" + VER);
