@@ -402,8 +402,6 @@
         runSearch();
       }
     });
-
-    loadDictionary();
   }
 
   if (document.readyState === "loading") {
