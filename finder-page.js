@@ -31,7 +31,7 @@
     var s = document.createElement("script");
     s.src = document.currentScript && document.currentScript.getAttribute("data-finder-src")
       ? document.currentScript.getAttribute("data-finder-src")
-      : "blossom-finder.js?v=26";
+      : "blossom-finder.js?v=25";
     s.defer = true;
     document.body.appendChild(s);
   }

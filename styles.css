@@ -117,11 +117,19 @@ p  { margin: 0 0 1em; }
 }
 
 section { padding-block: clamp(56px, 8vw, 110px); position: relative; }
-/* Offscreen sections: skip paint for Speed Index; scrollbar-gutter avoids CLS */
-main > section:not(.hero),
+/* Offscreen sections: skip paint for Speed Index; skip on finder page (CLS) */
+main > section:not(.hero):not(.page-hero):not(.finder-section),
 main > .strip {
   content-visibility: auto;
   contain-intrinsic-size: auto 800px;
+}
+@media (max-width: 700px) {
+  .finder-page main > section,
+  .finder-page main > .strip,
+  .finder-page .site-footer {
+    content-visibility: visible;
+    contain-intrinsic-size: auto;
+  }
 }
 /* Desktop only: skip below-fold layout work (TBT) */
 @media (min-width: 701px) {

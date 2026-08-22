@@ -3,9 +3,12 @@ const path = require("path");
 
 const root = path.join(__dirname, "..");
 const htmlPath = path.join(root, "blossom-word-finder.html");
-const VER = "26";
+const VER = "27";
 let html = fs.readFileSync(htmlPath, "utf8");
 html = html.replace(/\r\n/g, "\n");
+if (!html.includes('class="finder-page"')) {
+  html = html.replace("<body>", '<body class="finder-page">');
+}
 
 const base = [
   "html{scrollbar-gutter:stable;scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:84px}",
@@ -19,7 +22,7 @@ const base = [
   "p{margin:0 0 1em}",
   ".skip-link{position:absolute;left:50%;transform:translateX(-50%) translateY(-140%);top:8px;z-index:200;background:var(--ink);color:#fff;padding:10px 18px;border-radius:var(--radius-pill)}",
   ".container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}",
-  "section{padding-block:clamp(40px,6vw,110px);position:relative}",
+  "section{padding-block:clamp(56px,8vw,110px);position:relative}",
   ".site-header{position:sticky;top:0;z-index:100;background:rgba(255,249,245,.94);border-bottom:1px solid var(--line);contain:layout}",
   ".nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}",
   ".brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.25rem;color:var(--ink)}",
@@ -36,14 +39,15 @@ const base = [
   ".btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:inherit;font-size:1.02rem;font-weight:600;line-height:1;padding:15px 28px;min-height:52px;border:none;border-radius:var(--radius-pill);background:var(--rose);color:#fff;cursor:pointer;box-shadow:0 8px 20px rgba(255,92,138,.35);text-align:center}",
   ".btn--primary{background:linear-gradient(135deg,var(--rose-soft),var(--rose))}",
   ".btn--ghost{background:transparent;color:#a3164f;box-shadow:none;border:2px solid var(--line)}",
-  ".page-hero{padding-block:clamp(28px,5vw,72px);text-align:center;background:var(--cream);border-bottom:1px solid var(--line)}",
-  ".page-hero p{color:var(--muted);max-width:620px;margin:0 auto;font-size:1.05em}",
+  ".page-hero{padding-block:clamp(40px,7vw,72px);text-align:center;background:var(--cream);border-bottom:1px solid var(--line)}",
+  ".page-hero h1{font-size:clamp(2rem,1.4rem + 2.6vw,3.2rem);margin-bottom:12px}",
+  ".page-hero p{color:var(--muted);max-width:620px;margin:0 auto;font-size:1.08em}",
   ".page-hero a{color:#a3164f;font-weight:500;text-decoration:underline;text-underline-offset:2px}",
-  ".breadcrumb{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;list-style:none;margin:0 0 14px;padding:0;font-size:.9rem;color:var(--muted)}",
+  ".breadcrumb{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;list-style:none;margin:0 0 18px;padding:0;font-size:.9rem;color:var(--muted)}",
   ".breadcrumb li{display:inline-flex;align-items:center;gap:6px}",
   ".breadcrumb li:not(:last-child)::after{content:'›';color:var(--rose);margin-left:6px}",
   ".breadcrumb a{color:#a3164f;font-weight:500}",
-  ".finder-section{padding-block:clamp(24px,4vw,56px);background:var(--cream)}",
+  ".finder-section{padding-block:clamp(32px,5vw,56px);background:var(--cream)}",
   ".finder-card{max-width:720px;margin:0 auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:clamp(22px,4vw,36px)}",
   ".finder-card__head{text-align:center;margin-bottom:clamp(20px,3vw,28px)}",
   ".finder-card__head p{margin:0;color:var(--muted);font-size:.98rem}",
@@ -62,10 +66,15 @@ const base = [
   ".finder-hint-select{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--muted)}",
   ".finder-hint-select select{border:1px solid var(--line);border-radius:var(--radius-pill);padding:6px 12px;background:#fff;color:var(--ink);font:inherit}",
   ".finder-status{min-height:1.4em;text-align:center;font-size:.92rem;color:var(--muted);margin-bottom:8px}",
+  ".finder-results{min-height:48px}",
+  ".showcase{margin:clamp(24px,4vw,40px) auto 0;max-width:560px}",
+  ".showcase img{width:100%;height:auto;aspect-ratio:1;border-radius:var(--radius-lg);border:1px solid var(--line)}",
+  ".prose{max-width:820px;margin-inline:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(24px,4vw,52px)}",
+  ".faq{max-width:820px;margin-inline:auto;display:grid;gap:14px}",
   ".finder-rules{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted);text-align:center}",
   ".finder-rules strong{color:var(--rose-deep)}",
   "[hidden]{display:none!important}",
-  "@media (max-width:700px){main>section:not(.page-hero):not(.finder-section),.site-footer,.finder-section .showcase{content-visibility:auto;contain-intrinsic-size:auto 800px}}"
+  "@media (max-width:700px){.finder-page main>section,.finder-page .site-footer{content-visibility:visible!important;contain-intrinsic-size:auto!important}}"
 ];
 
 const cssBlock =
