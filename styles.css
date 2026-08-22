@@ -1189,3 +1189,327 @@ main > .strip {
 }
 .footer-legal a { color: #b7aecb; font-size: 0.9rem; }
 .footer-legal a:hover { color: #fff; }
+
+/* ==========================================================================
+   Blossom Word Finder tool
+   ========================================================================== */
+
+.finder-section {
+  padding-block: clamp(32px, 5vw, 56px);
+  background:
+    radial-gradient(900px 420px at 50% -10%, rgba(255, 143, 179, 0.18) 0%, rgba(255, 143, 179, 0) 62%),
+    radial-gradient(700px 380px at 90% 40%, rgba(124, 92, 255, 0.1) 0%, rgba(124, 92, 255, 0) 55%),
+    var(--cream);
+}
+
+.finder-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: clamp(22px, 4vw, 36px);
+}
+
+.finder-card__head {
+  text-align: center;
+  margin-bottom: clamp(20px, 3vw, 28px);
+}
+
+.finder-card__head h2 {
+  font-size: clamp(1.35rem, 1rem + 1.4vw, 1.85rem);
+  margin: 0 0 8px;
+}
+
+.finder-card__head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+.finder-flower {
+  position: relative;
+  width: min(100%, 320px);
+  aspect-ratio: 1;
+  margin: 0 auto clamp(22px, 3vw, 28px);
+}
+
+.finder-flower__ring {
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 204, 77, 0.35) 0%, rgba(255, 204, 77, 0) 58%),
+    conic-gradient(from 0deg, rgba(255, 143, 179, 0.12), rgba(124, 92, 255, 0.1), rgba(255, 204, 77, 0.12), rgba(255, 143, 179, 0.12));
+  border: 1px dashed rgba(255, 92, 138, 0.22);
+  pointer-events: none;
+}
+
+.finder-letter {
+  width: clamp(44px, 12vw, 54px);
+  height: clamp(44px, 12vw, 54px);
+  border: 2px solid rgba(255, 92, 138, 0.35);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-display, "Fredoka", system-ui, sans-serif);
+  font-size: clamp(1.25rem, 3.5vw, 1.55rem);
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+
+.finder-letter:focus {
+  outline: none;
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgba(255, 92, 138, 0.22);
+  transform: scale(1.04);
+}
+
+.finder-petal {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.finder-petal--0 { top: 6%; left: 50%; }
+.finder-petal--1 { top: 22%; left: 84%; }
+.finder-petal--2 { top: 72%; left: 84%; }
+.finder-petal--3 { top: 94%; left: 50%; }
+.finder-petal--4 { top: 72%; left: 16%; }
+.finder-petal--5 { top: 22%; left: 16%; }
+
+.finder-center-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 2;
+}
+
+.finder-center-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rose-deep);
+  background: rgba(255, 249, 245, 0.92);
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 92, 138, 0.25);
+}
+
+.finder-center {
+  width: clamp(56px, 15vw, 68px);
+  height: clamp(56px, 15vw, 68px);
+  border-color: var(--rose);
+  background: linear-gradient(145deg, #fff6dc, #ffe9a8);
+  color: var(--rose-deep);
+  font-size: clamp(1.45rem, 4vw, 1.85rem);
+  box-shadow: 0 8px 22px rgba(255, 92, 138, 0.18);
+}
+
+.finder-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.finder-controls .btn { min-width: 132px; }
+.finder-controls .btn[hidden] { display: none !important; }
+
+.finder-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  background: rgba(255, 249, 245, 0.85);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.finder-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ink);
+  user-select: none;
+}
+
+.finder-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--rose);
+}
+
+.finder-hint-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.finder-hint-select select {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.finder-hint-select select:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.finder-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.finder-loading[hidden] { display: none !important; }
+
+.finder-spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(255, 92, 138, 0.2);
+  border-top-color: var(--rose);
+  border-radius: 50%;
+  animation: finder-spin 0.7s linear infinite;
+}
+
+@keyframes finder-spin { to { transform: rotate(360deg); } }
+
+.finder-status {
+  min-height: 1.4em;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.finder-status--error { color: #c0392b; }
+
+.finder-results {
+  min-height: 48px;
+}
+
+.finder-empty {
+  text-align: center;
+  color: var(--muted);
+  margin: 0;
+  padding: 12px 0;
+}
+
+.finder-summary {
+  text-align: center;
+  font-weight: 600;
+  color: var(--rose-deep);
+  margin: 0 0 16px;
+}
+
+.finder-group { margin-bottom: 18px; }
+
+.finder-group__title {
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.finder-wordlist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.finder-wordlist li {
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(231, 239, 255, 0.55);
+  border: 1px solid rgba(124, 92, 255, 0.12);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.finder-wordlist--hints li {
+  background: rgba(255, 227, 239, 0.55);
+  border-color: rgba(255, 92, 138, 0.15);
+  color: var(--rose-deep);
+}
+
+.finder-word--pangram {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(255, 204, 77, 0.35), rgba(255, 143, 179, 0.35)) !important;
+  border-color: rgba(255, 92, 138, 0.35) !important;
+}
+
+.finder-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--rose-deep);
+  background: rgba(255, 255, 255, 0.75);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.finder-hint-count {
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--rose-deep);
+  margin: 8px 0 0;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: rgba(255, 227, 239, 0.45);
+  border: 1px dashed rgba(255, 92, 138, 0.25);
+}
+
+.finder-rules {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.finder-rules strong { color: var(--rose-deep); }
+
+@media (max-width: 420px) {
+  .finder-flower { width: min(100%, 280px); }
+  .finder-controls .btn { flex: 1 1 calc(50% - 10px); min-width: 0; }
+  .finder-options { flex-direction: column; align-items: stretch; }
+  .finder-hint-select { justify-content: space-between; }
+}

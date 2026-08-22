@@ -50,7 +50,7 @@
   <meta property="og:image" content="https://blossomgamez.com/assets/og-image.png" />
 
   <link rel="preload" href="assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 701px)" />
-  <link rel="stylesheet" href="styles.min.css?v=22" />
+  <link rel="stylesheet" href="styles.min.css?v=23" />
 
   <script type="application/ld+json">
   {
@@ -118,10 +118,66 @@
       </div>
     </section>
 
+    <section class="finder-section" id="finder-tool" aria-labelledby="finder-heading">
+      <div class="container">
+        <div class="finder-card" id="blossomFinder">
+          <div class="finder-card__head">
+            <h2 id="finder-heading">Enter Your Letters</h2>
+            <p>Type the 6 petal letters and the center letter from today's puzzle, then find every valid word.</p>
+          </div>
+
+          <div class="finder-flower" role="group" aria-label="Blossom puzzle letters">
+            <div class="finder-flower__ring" aria-hidden="true"></div>
+            <input class="finder-letter finder-petal finder-petal--0" id="finderPetal0" type="text" inputmode="text" maxlength="1" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Petal letter 1" />
+            <input class="finder-letter finder-petal finder-petal--1" id="finderPetal1" type="text" inputmode="text" maxlength="1" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Petal letter 2" />
+            <input class="finder-letter finder-petal finder-petal--2" id="finderPetal2" type="text" inputmode="text" maxlength="1" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Petal letter 3" />
+            <input class="finder-letter finder-petal finder-petal--3" id="finderPetal3" type="text" inputmode="text" maxlength="1" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Petal letter 4" />
+            <input class="finder-letter finder-petal finder-petal--4" id="finderPetal4" type="text" inputmode="text" maxlength="1" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Petal letter 5" />
+            <input class="finder-letter finder-petal finder-petal--5" id="finderPetal5" type="text" inputmode="text" maxlength="1" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Petal letter 6" />
+            <div class="finder-center-wrap">
+              <span class="finder-center-label">Center</span>
+              <input class="finder-letter finder-center" id="finderCenter" type="text" inputmode="text" maxlength="1" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="Center letter (required in every word)" />
+            </div>
+          </div>
+
+          <div class="finder-controls">
+            <button class="btn btn--primary" type="button" id="finderFind">Find Words</button>
+            <button class="btn btn--ghost" type="button" id="finderClear">Clear</button>
+            <button class="btn btn--ghost" type="button" id="finderCopy" hidden>Copy Results</button>
+          </div>
+
+          <div class="finder-options">
+            <label class="finder-toggle">
+              <input type="checkbox" id="finderHintMode" />
+              Hint mode
+            </label>
+            <label class="finder-hint-select">
+              Show hints as
+              <select id="finderHintStyle" disabled>
+                <option value="count">Total word count</option>
+                <option value="first">First letter only</option>
+                <option value="length">Word length only</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="finder-loading" id="finderLoading" hidden>
+            <span class="finder-spinner" aria-hidden="true"></span>
+            <span>Searching dictionary…</span>
+          </div>
+
+          <p class="finder-status" id="finderStatus" role="status" aria-live="polite"></p>
+          <div class="finder-results" id="finderResults"></div>
+
+          <p class="finder-rules">Words must be <strong>4+ letters</strong>, include the <strong>center letter</strong>, and use only your 7 letters — <strong>letters can repeat</strong> in a word.</p>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="container">
         <div class="prose">
-          <p>Stuck on today's flower? You're not alone. Every day, thousands of players open the Merriam-Webster Blossom word game, stare at seven letters arranged in a circle, and hit a wall. That's exactly what this page is for. Use the Blossom Word Finder below to enter your letters and instantly see every valid word you can form — plus hints if you'd rather figure it out yourself.</p>
+          <p>Stuck on today's flower? You're not alone. Every day, thousands of players open the Merriam-Webster Blossom word game, stare at seven letters arranged in a circle, and hit a wall. That's exactly what this page is for. Use the Blossom Word Finder above to enter your letters and instantly see every valid word you can form — plus hints if you'd rather figure it out yourself.</p>
           <p>Whether you searched for a Blossom word finder, a Blossom solver, or just a quick Blossom hint, you're in the right place. This tool covers all three.</p>
 
           <p style="margin-bottom:0"><a class="btn btn--primary btn--lg" href="/#play" style="text-decoration:none;color:#fff">▶ Play Today's Blossom Puzzle</a></p>
@@ -144,7 +200,7 @@
             <li>Look for the pangram hint only — the one word that uses all seven letters — since it's usually the hardest one to spot and the most satisfying to solve.</li>
             <li>Check word length instead of the word itself. Knowing there's a six-letter word left can point your brain in the right direction without giving anything away.</li>
           </ul>
-          <p>If you do want the full list, scroll back up to the word finder. But a lot of regular players say the game gets more enjoyable once they start using hints sparingly instead of solving the whole board every time.</p>
+          <p>If you do want the full list, scroll back up to the <a href="#finder-tool">word finder</a>. But a lot of regular players say the game gets more enjoyable once they start using hints sparingly instead of solving the whole board every time.</p>
 
           <h2>Tips for Getting Better at Blossom Without a Solver</h2>
           <p>Using a word finder every day is fine, but if you want to rely on it less over time, a few habits help.</p>
@@ -276,5 +332,6 @@
   </footer>
 
   <script src="app.js?v=22" defer></script>
+  <script src="blossom-finder.js?v=23" defer></script>
 </body>
 </html>
