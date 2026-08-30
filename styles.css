@@ -1521,3 +1521,129 @@ main > .strip {
   .finder-options { flex-direction: column; align-items: stretch; }
   .finder-hint-select { justify-content: space-between; }
 }
+
+/* ==========================================================================
+   Blossom scoring table
+   ========================================================================== */
+
+.score-table-wrap {
+  margin: 24px 0 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.96rem;
+}
+
+.score-table thead th {
+  background: linear-gradient(135deg, var(--rose-soft), var(--rose));
+  color: #fff;
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 16px 20px;
+  white-space: nowrap;
+}
+
+.score-table thead th:nth-child(2) { text-align: center; }
+
+.score-table tbody td {
+  padding: 15px 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  vertical-align: middle;
+}
+
+.score-table tbody td:first-child {
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.score-table tbody td:nth-child(2) { text-align: center; white-space: nowrap; }
+
+.score-table tbody tr:nth-child(even) { background: rgba(255, 249, 245, 0.7); }
+.score-table tbody tr:hover { background: rgba(255, 143, 179, 0.1); }
+
+.score-points {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--rose-deep);
+  background: rgba(255, 92, 138, 0.1);
+  border: 1px solid rgba(255, 92, 138, 0.2);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.92rem;
+}
+
+.score-points--sun {
+  color: #b26a00;
+  background: rgba(255, 204, 77, 0.22);
+  border-color: rgba(255, 204, 77, 0.5);
+}
+
+.score-points--rose {
+  color: #fff;
+  background: linear-gradient(135deg, var(--rose-soft), var(--rose));
+  border-color: transparent;
+}
+
+.score-tag {
+  display: inline-block;
+  margin-left: 6px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  background: var(--cream);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  vertical-align: middle;
+}
+
+.score-tag--sun { color: #b26a00; background: rgba(255, 204, 77, 0.18); border-color: rgba(255, 204, 77, 0.45); }
+.score-tag--rose { color: var(--rose-deep); background: rgba(255, 92, 138, 0.12); border-color: rgba(255, 92, 138, 0.28); }
+
+.score-row--bonus { background: rgba(255, 204, 77, 0.08) !important; }
+.score-row--pangram { background: rgba(255, 92, 138, 0.07) !important; }
+.score-row--pangram td:first-child { color: var(--rose-deep); }
+
+@media (max-width: 640px) {
+  .score-table thead { display: none; }
+  .score-table, .score-table tbody, .score-table tr, .score-table td { display: block; width: 100%; }
+  .score-table tr {
+    border-top: 3px solid var(--rose);
+    padding: 6px 0;
+  }
+  .score-table tbody tr:first-child { border-top: none; }
+  .score-table tbody td {
+    border-top: none;
+    padding: 8px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    text-align: right;
+  }
+  .score-table tbody td:nth-child(2) { text-align: right; }
+  .score-table tbody td:first-child { white-space: normal; }
+  .score-table tbody td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--rose-deep);
+    text-align: left;
+    flex: 0 0 auto;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .score-table tbody td:empty { display: none; }
+}

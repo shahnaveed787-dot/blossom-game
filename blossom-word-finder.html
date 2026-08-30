@@ -182,52 +182,54 @@
           <h2>Blossom Game Scoring</h2>
           <p>Merriam-Webster has confirmed that longer words score more points and that pangrams and bonus letters add extra points, but has not published an official points chart. The figures below are the values most consistently reported by players and independent puzzle guides, so treat them as a close approximation rather than an official source.</p>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Word length</th>
-                <th>Approximate points</th>
-                <th>Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>4 letters (minimum)</td>
-                <td>1 point</td>
-                <td>The lowest possible score for a valid word</td>
-              </tr>
-              <tr>
-                <td>5 letters</td>
-                <td>5 points</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>6 letters</td>
-                <td>6 points</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>7 letters</td>
-                <td>7 points</td>
-                <td>Often the pangram length</td>
-              </tr>
-              <tr>
-                <td>8+ letters</td>
-                <td>1 point per letter</td>
-                <td>Rare, but the highest possible word score</td>
-              </tr>
-              <tr>
-                <td>Bonus letter used</td>
-                <td>+5 points per use (less consistently reported)</td>
-                <td>One petal letter is highlighted each puzzle; commonly reported to add a bonus, though this figure has fewer independent confirmations than the others in this table</td>
-              </tr>
-              <tr>
-                <td>Pangram (all 7 letters)</td>
-                <td>+7 points</td>
-                <td>Added on top of the word's normal length score</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="score-table-wrap">
+            <table class="score-table">
+              <thead>
+                <tr>
+                  <th>Word length</th>
+                  <th>Approximate points</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Word length">4 letters <span class="score-tag">minimum</span></td>
+                  <td data-label="Approximate points"><span class="score-points">1 pt</span></td>
+                  <td data-label="Notes">The lowest possible score for a valid word</td>
+                </tr>
+                <tr>
+                  <td data-label="Word length">5 letters</td>
+                  <td data-label="Approximate points"><span class="score-points">5 pts</span></td>
+                  <td data-label="Notes"></td>
+                </tr>
+                <tr>
+                  <td data-label="Word length">6 letters</td>
+                  <td data-label="Approximate points"><span class="score-points">6 pts</span></td>
+                  <td data-label="Notes"></td>
+                </tr>
+                <tr>
+                  <td data-label="Word length">7 letters</td>
+                  <td data-label="Approximate points"><span class="score-points">7 pts</span></td>
+                  <td data-label="Notes">Often the pangram length</td>
+                </tr>
+                <tr>
+                  <td data-label="Word length">8+ letters</td>
+                  <td data-label="Approximate points"><span class="score-points">1 pt / letter</span></td>
+                  <td data-label="Notes">Rare, but the highest possible word score</td>
+                </tr>
+                <tr class="score-row--bonus">
+                  <td data-label="Word length">Bonus letter used <span class="score-tag score-tag--sun">bonus</span></td>
+                  <td data-label="Approximate points"><span class="score-points score-points--sun">+5 pts</span> per use</td>
+                  <td data-label="Notes">One petal letter is highlighted each puzzle; commonly reported to add a bonus, though this figure has fewer independent confirmations than the others in this table</td>
+                </tr>
+                <tr class="score-row--pangram">
+                  <td data-label="Word length">Pangram <span class="score-tag score-tag--rose">all 7 letters</span></td>
+                  <td data-label="Approximate points"><span class="score-points score-points--rose">+7 pts</span></td>
+                  <td data-label="Notes">Added on top of the word's normal length score</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <p>Since you're capped at 12 words, the highest final scores usually come from a mix of a few quick short words plus at least one long word or pangram, rather than 12 short words alone.</p>
 
