@@ -68,7 +68,7 @@ const base = [
   ".finder-status{min-height:1.4em;text-align:center;font-size:.92rem;color:var(--muted);margin-bottom:8px}",
   ".finder-results{min-height:48px}",
   ".showcase{margin:clamp(24px,4vw,40px) auto 0;max-width:560px}",
-  ".showcase img{width:100%;height:auto;aspect-ratio:1;border-radius:var(--radius-lg);border:1px solid var(--line)}",
+  ".showcase img{width:100%;height:auto;aspect-ratio:966/587;border-radius:var(--radius-lg);border:1px solid var(--line)}",
   ".prose{max-width:820px;margin-inline:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:clamp(24px,4vw,52px)}",
   ".faq{max-width:820px;margin-inline:auto;display:grid;gap:14px}",
   ".finder-rules{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted);text-align:center}",
