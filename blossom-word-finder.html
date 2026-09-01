@@ -154,66 +154,50 @@
           <h2>What Is Blossom Word Game Solver and Helper?</h2>
           <p>A <strong>Blossom Word Game Solver and Helper</strong> is an online tool designed to help players find valid words and solve challenging <a href="/"><strong>blossom</strong> puzzles</a>. It analyzes letters, word patterns, spelling variations, prefixes, suffixes and vocabulary relationships to generate relevant solutions. By understanding how words are formed and how they relate to one another, the tool can identify potential answers from a broad dictionary. Players can use this tool to discover longer words, verify possible combinations and overcome difficult puzzles. It is useful for improving vocabulary, developing word-solving skills, and finding solutions faster while enjoying the popular word game.</p>
 
-          <h2>Difference Between Blossom Game Solver and Spelling Bee Solver</h2>
-          <p>A <strong>Blossom game solver</strong> and a Spelling Bee solver look similar at first glance: you type seven letters, mark the required center letter, and get a list of valid words. Under the hood they are built for two different puzzles. The New York Times Spelling Bee is an open-ended hunt for every accepted word. Merriam-Webster's <a href="/">Blossom</a> is a scoring puzzle with a hard 12-word cap, a highlighted bonus petal, and a pangram bonus. A useful solver has to follow those rules, not just dump anagrams.</p>
-          <p>That is why this page is a Blossom solver first. It filters for the center letter, the four-letter minimum, and letter reuse, then ranks results so you can pick a high-scoring set instead of flooding the board with every four-letter word. A Spelling Bee solver does the opposite job: it tries to surface the full word list so you can climb Genius and Queen Bee ranks, where volume is the point.</p>
+          <h2>Blossom Game Solver vs Spelling Bee Solver</h2>
+          <p>A <strong>Blossom game solver</strong> is built for Merriam-Webster's 12-word flower. A Spelling Bee solver is built for the New York Times hive, where the goal is every accepted word — Genius, then Queen Bee. Same seven-letter layout; different job.</p>
 
           <div class="score-table-wrap">
             <table class="score-table compare-table">
               <thead>
                 <tr>
-                  <th>What to compare</th>
+                  <th>Fact</th>
                   <th>Blossom game solver</th>
                   <th>Spelling Bee solver</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td data-label="What to compare">Puzzle it is built for</td>
-                  <td data-label="Blossom game solver">Merriam-Webster Blossom flower: 6 petals + required center letter</td>
-                  <td data-label="Spelling Bee solver">NYT Spelling Bee honeycomb: 6 outer letters + required center letter</td>
+                  <td data-label="Fact">Goal</td>
+                  <td data-label="Blossom game solver">Best 12 words for a high score</td>
+                  <td data-label="Spelling Bee solver">Every valid hive word (Queen Bee = 100% of points)</td>
                 </tr>
                 <tr>
-                  <td data-label="What to compare">What the solver should output</td>
-                  <td data-label="Blossom game solver">A ranked shortlist you can turn into 12 strong submissions</td>
-                  <td data-label="Spelling Bee solver">The full accepted list, often grouped by length or starting letter</td>
+                  <td data-label="Fact">Scoring it follows</td>
+                  <td data-label="Blossom game solver">Length + pangram + bonus petal</td>
+                  <td data-label="Spelling Bee solver">4-letter words = 1 pt; longer words = 1 pt per letter; pangram = +7</td>
                 </tr>
                 <tr>
-                  <td data-label="What to compare">Word cap</td>
-                  <td data-label="Blossom game solver">Hard stop at 12 words — extra answers do not raise the score</td>
-                  <td data-label="Spelling Bee solver">No cap — more valid words mean a higher rank</td>
+                  <td data-label="Fact">Typical output</td>
+                  <td data-label="Blossom game solver">Ranked shortlist + optional hints</td>
+                  <td data-label="Spelling Bee solver">Full list by length/points, or a spoiler-free hint grid</td>
                 </tr>
                 <tr>
-                  <td data-label="What to compare">How results are ranked</td>
-                  <td data-label="Blossom game solver">Length, pangram, and bonus-petal value so the best 12 stand out</td>
-                  <td data-label="Spelling Bee solver">Usually by length or alphabet, to help you find every remaining word</td>
-                </tr>
-                <tr>
-                  <td data-label="What to compare">Bonus letter</td>
-                  <td data-label="Blossom game solver">One highlighted petal is commonly reported to add extra points per use</td>
-                  <td data-label="Spelling Bee solver">No rotating bonus petal — only length and pangrams add extra value</td>
+                  <td data-label="Fact">Word cap</td>
+                  <td data-label="Blossom game solver">12 submissions</td>
+                  <td data-label="Spelling Bee solver">None — a hive can hold 40+ answers</td>
                 </tr>
                 <tr class="score-row--pangram">
-                  <td data-label="What to compare">Pangram</td>
-                  <td data-label="Blossom game solver">Flagged as a must-play: all 7 letters, plus a reported +7 bonus on top of length</td>
-                  <td data-label="Spelling Bee solver">Flagged as Queen Bee progress: all 7 letters, plus a pangram bonus</td>
-                </tr>
-                <tr>
-                  <td data-label="What to compare">Dictionary</td>
-                  <td data-label="Blossom game solver">Aligned with Merriam-Webster's accepted list (no proper nouns, slang, or abbreviations)</td>
-                  <td data-label="Spelling Bee solver">Aligned with the NYT editorial word list, which can reject words Blossom allows, and vice versa</td>
-                </tr>
-                <tr>
-                  <td data-label="What to compare">Best way to use it</td>
-                  <td data-label="Blossom game solver">Hint mode for a nudge, or the full list to pick long words and the pangram</td>
-                  <td data-label="Spelling Bee solver">Reveal remaining words, starting letters, or the complete hive</td>
+                  <td data-label="Fact">Pangram</td>
+                  <td data-label="Blossom game solver">Must-play among the 12</td>
+                  <td data-label="Spelling Bee solver">Highlighted (often in yellow); at least one per puzzle</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <p>Shared mechanics still matter. Both solvers require the center letter in every word, both reject anything shorter than four letters, and both allow letters to repeat inside a word. If you paste Blossom letters into a generic Spelling Bee solver, you will often get a usable list — and then waste slots on short filler words that would be fine in Spelling Bee but weak in Blossom.</p>
-          <p>Use a Spelling Bee solver when the goal is completeness. Use the <a href="#finder-tool">Blossom Word Finder</a> on this page when the goal is a better 12-word score: longer words, the pangram, and answers that match Merriam-Webster's flower rather than the NYT hive.</p>
+          <p>On <a href="https://spellbee.org/solver" rel="noopener noreferrer" target="_blank">SpellBee.org's solver</a>, you type the yellow center letter plus the six outer hive letters, then press Find Words. It returns every dictionary word that uses only those seven letters and includes the center — letters may repeat. Results are grouped by length and ranked by points; pangrams (all seven letters) are highlighted in yellow and add 7 bonus points. Scoring matches the NYT hive: 1 point for a 4-letter word, 1 point per letter after that. The page is designed as a hint engine for Genius, and it notes the list can include uncommon words the official puzzle excludes.</p>
+          <p><a href="https://www.sbsolver.com/" rel="noopener noreferrer" target="_blank">SB Solver</a> is built for the NYT Spelling Bee and leads with customizable, spoiler-free hints instead of an instant dump. You enter all seven letters with the center capitalized and the rest lowercase, then choose how much help to show. Its signature view is a starting-letter × word-length grid. A typical daily hive on that tool lists on the order of 40–45 words and about 150 points with one pangram (for example, 44 words / 151 pts / 1 pangram). Extra stats — bingo, perfect pangrams, compounds, plurals — exist so you can hunt remaining words without seeing them. Use those solvers for completeness; use the <a href="#finder-tool">Blossom Word Finder</a> when you need a 12-word Blossom score, not a full hive.</p>
 
           <h2>Blossom Word Game Answers</h2>
           <p>When you need <strong>blossom word game answers</strong> for today's Merriam-Webster flower, this page turns your seven letters into a complete, ranked list in seconds. Instead of scrolling through someone else's spoiler post, you generate your own <strong>blossom word game answers today</strong> from the exact center letter and six petals in front of you — so the results always match the current daily puzzle rather than yesterday's board.</p>
@@ -335,7 +319,7 @@
           </details>
           <details>
             <summary>What's the difference between Blossom and Spelling Bee?</summary>
-            <p>Both are Merriam-Webster word games, but they work differently. Spelling Bee gives you a fixed set of letters and asks for as many words as possible with no word limit. Blossom caps you at 12 words per puzzle and arranges the letters in a flower shape, so it rewards precision over volume.</p>
+            <p>Blossom is a Merriam-Webster word game, while Spelling Bee is a New York Times game. They work differently too. Spelling Bee gives you a fixed set of letters and asks for as many words as possible with no word limit. Blossom caps you at 12 words per puzzle and arranges the letters in a flower shape, so it rewards precision over volume.</p>
           </details>
           <details>
             <summary>How is my score calculated in Blossom?</summary>
