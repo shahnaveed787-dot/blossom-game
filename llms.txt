@@ -13,6 +13,8 @@ Playable game is embedded on the homepage. Legal pages (Terms, Privacy, DMCA) ar
 - [Homepage](https://blossomgamez.com/): Main Blossom Word Game page with playable puzzle, how-to-play, features, benefits, tips, reviews, and FAQ
 - [About Us](https://blossomgamez.com/about-us): Story, mission, and values behind the site
 - [Contact Us](https://blossomgamez.com/contact-us): Contact form and support details
+- [Blossom Word Finder](https://blossomgamez.com/blossom-word-finder): Free Blossom solver with hints
+- [Spelling Bee Solver](https://blossomgamez.com/spelling-bee-solver): Unofficial NYT hive solver with spoiler-free hints and a letter grid
 
 ## Key topics on the homepage
 
