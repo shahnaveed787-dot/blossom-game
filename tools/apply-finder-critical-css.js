@@ -3,7 +3,7 @@ const path = require("path");
 
 const root = path.join(__dirname, "..");
 const htmlPath = path.join(root, "blossom-word-finder.html");
-const VER = "27";
+const VER = "28";
 let html = fs.readFileSync(htmlPath, "utf8");
 html = html.replace(/\r\n/g, "\n");
 if (!html.includes('class="finder-page"')) {
