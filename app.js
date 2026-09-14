@@ -245,6 +245,105 @@
   var prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var isMobile = window.matchMedia && window.matchMedia("(max-width: 700px)").matches;
 
+  /* ---------- Strategy demo player ---------- */
+  var demo = document.getElementById("strategyDemo");
+  if (demo) {
+    var DEMO_WORD = ["G", "A", "R", "D", "E", "N", "S"];
+    var demoWord = document.getElementById("strategyWord");
+    var demoBonus = document.getElementById("strategyBonus");
+    var demoScore = document.getElementById("strategyScore");
+    var demoTime = document.getElementById("strategyTime");
+    var demoBar = document.getElementById("strategyBar");
+    var demoCenter = document.getElementById("strategyCenter");
+    if (!demoWord || !demoBonus || !demoScore || !demoTime || !demoBar || !demoCenter) {
+      demo = null;
+    }
+  }
+  if (demo) {
+    var demoPetals = demo.querySelectorAll(".demo-petal");
+    var demoTimers = [];
+    var demoPlaying = false;
+
+    var demoClear = function () {
+      demoTimers.forEach(clearTimeout);
+      demoTimers = [];
+    };
+    var demoLater = function (fn, ms) {
+      demoTimers.push(setTimeout(fn, ms));
+    };
+    var demoFormat = function (seconds) {
+      var m = Math.floor(seconds / 60);
+      var s = seconds % 60;
+      return (m < 10 ? "0" : "") + m + ":" + (s < 10 ? "0" : "") + s;
+    };
+    var demoIdle = function () {
+      demoPlaying = false;
+      demo.classList.remove("is-playing");
+      demoCenter.classList.remove("is-center-lit");
+      demoCenter.setAttribute("aria-label", "Replay strategy demo");
+      demoPetals.forEach(function (p) { p.classList.remove("is-lit"); });
+      demoWord.innerHTML = DEMO_WORD.map(function (ch) { return "<span>" + ch + "</span>"; }).join("");
+      demoBonus.classList.add("is-on");
+      demoScore.textContent = "248";
+      demoTime.textContent = "01:42 / 04:18";
+      demoBar.style.width = "40%";
+    };
+    var demoPlay = function () {
+      if (demoPlaying) return;
+      demoClear();
+      demoPlaying = true;
+      demo.classList.add("is-playing");
+      demoCenter.setAttribute("aria-label", "Strategy demo playing");
+      demoPetals.forEach(function (p) { p.classList.remove("is-lit"); });
+      demoCenter.classList.remove("is-center-lit");
+      demoBonus.classList.remove("is-on");
+      demoScore.textContent = "234";
+      demoWord.innerHTML = DEMO_WORD.map(function () { return '<span class="is-empty">·</span>'; }).join("");
+      demoBar.style.width = "0%";
+      demoTime.textContent = "00:00 / 04:18";
+
+      if (prefersReduced) {
+        demoIdle();
+        return;
+      }
+
+      var step = 620;
+      DEMO_WORD.forEach(function (ch, i) {
+        demoLater(function () {
+          demoPetals.forEach(function (p) { p.classList.remove("is-lit"); });
+          demoCenter.classList.remove("is-center-lit");
+          if (ch === "R") {
+            demoCenter.classList.add("is-center-lit");
+          } else {
+            var petal = demo.querySelector('.demo-petal[data-letter="' + ch + '"]');
+            if (petal) petal.classList.add("is-lit");
+          }
+          var slots = demoWord.querySelectorAll("span");
+          slots[i].textContent = ch;
+          slots[i].classList.remove("is-empty");
+          var elapsed = Math.round(((i + 1) / DEMO_WORD.length) * 258);
+          demoTime.textContent = demoFormat(elapsed) + " / 04:18";
+          demoBar.style.width = ((i + 1) / DEMO_WORD.length) * 100 + "%";
+        }, 280 + i * step);
+      });
+      demoLater(function () {
+        demoBonus.classList.add("is-on");
+        demoScore.textContent = "248";
+        demoPlaying = false;
+        demo.classList.remove("is-playing");
+        demoCenter.classList.remove("is-center-lit");
+        demoPetals.forEach(function (p) { p.classList.remove("is-lit"); });
+        demoCenter.setAttribute("aria-label", "Replay strategy demo");
+        demoTime.textContent = "04:18 / 04:18";
+        demoBar.style.width = "100%";
+      }, 280 + DEMO_WORD.length * step + 180);
+    };
+
+    demo.querySelectorAll("[data-demo-play]").forEach(function (btn) {
+      btn.addEventListener("click", demoPlay);
+    });
+  }
+
   if (isMobile) {
     /* CSS handles visibility */
   } else if (prefersReduced || !revealEls.length || !("IntersectionObserver" in window)) {
