@@ -2197,3 +2197,34 @@ main > .strip {
 @media (max-width: 420px) {
   .bee-hive { width: min(100%, 300px); }
 }
+
+.daily-update {
+  max-width: 720px;
+  margin: 0 auto clamp(20px, 3vw, 28px);
+  padding: 22px 24px 22px 26px;
+  background: #fff;
+  border: 1px solid #f3d5e2;
+  border-left: 5px solid var(--rose, #ff5c8a);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(34, 20, 58, 0.06));
+}
+.daily-update__badge {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #e8f8ef;
+  color: #0f7a4a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.daily-update__title {
+  margin: 0 0 8px;
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.45rem);
+  color: var(--ink, #22143a);
+}
+.daily-update p {
+  margin: 0;
+  color: var(--muted, #5b5470);
+}

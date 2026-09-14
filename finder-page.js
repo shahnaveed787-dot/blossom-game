@@ -5,6 +5,20 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  var dailyDate = document.getElementById("dailyUpdateDate");
+  if (dailyDate) {
+    var now = new Date();
+    var etOpts = { timeZone: "America/New_York" };
+    dailyDate.textContent = new Intl.DateTimeFormat("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      timeZone: "America/New_York"
+    }).format(now);
+    dailyDate.setAttribute("datetime", new Intl.DateTimeFormat("en-CA", etOpts).format(now));
+  }
+
   var toggle = document.querySelector(".nav-toggle");
   var menu = document.getElementById("mobileMenu");
   if (toggle && menu) {
