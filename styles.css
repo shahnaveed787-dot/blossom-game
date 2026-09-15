@@ -236,6 +236,102 @@ main > .strip {
   font-size: 0.95rem;
 }
 
+.dl-panel {
+  max-width: 980px;
+  margin: 8px auto 0;
+  padding: clamp(24px, 4.5vw, 44px);
+  color: #fff;
+  text-align: left;
+  background: linear-gradient(165deg, var(--rose) 0%, var(--rose-deep) 72%, #c92a62 100%);
+  border: 2px solid rgba(255, 204, 77, 0.55);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+.download-page .dl-panel h1 {
+  color: #fff;
+  text-align: left;
+  margin-bottom: 14px;
+}
+.download-page .dl-panel > p:not(.dl-cta-wrap) {
+  color: rgba(255, 255, 255, 0.94);
+  max-width: none;
+  margin: 0 0 26px;
+  text-align: left;
+}
+.dl-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0 0 26px;
+  padding: 14px;
+  border: 2px solid var(--sun);
+  border-radius: 22px;
+  background: rgba(34, 20, 58, 0.08);
+}
+.dl-fact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 10px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+}
+.dl-fact svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.dl-fact__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.88);
+}
+.dl-fact__value {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+}
+.dl-cta-wrap { text-align: center; }
+.dl-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 180px;
+  padding: 13px 28px;
+  border-radius: 12px;
+  background: var(--sun);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(255, 204, 77, 0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.dl-cta:hover {
+  color: var(--ink);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(255, 204, 77, 0.55);
+}
+.dl-cta:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+.dl-cta svg { width: 20px; height: 20px; }
+@media (min-width: 760px) {
+  .dl-facts { grid-template-columns: repeat(5, 1fr); gap: 12px; padding: 16px; }
+}
+
 /* Fullscreen: expand the shell without reloading the game */
 .game-shell:fullscreen,
 .game-shell:-webkit-full-screen {
