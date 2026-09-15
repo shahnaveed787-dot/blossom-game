@@ -55,7 +55,7 @@ Playing Blossom-style puzzles can support:
 - Homepage (play + guides): https://blossomgamez.com/
 - About Us: https://blossomgamez.com/about-us
 - Contact Us: https://blossomgamez.com/contact-us
-- Download: https://blossomgamez.com/download
+- Blossom Game Free Download: https://blossomgamez.com/blossom-game-free-download
 
 Legal pages exist but are marked noindex/nofollow for search engines:
 

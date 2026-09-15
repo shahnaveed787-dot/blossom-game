@@ -53,6 +53,11 @@ http
       return res.end();
     }
 
+    if (urlPath === "/download") {
+      res.writeHead(301, { Location: "/blossom-game-free-download" });
+      return res.end();
+    }
+
     if (urlPath === "/") urlPath = "/index.html";
 
     let filePath = path.join(ROOT, urlPath);

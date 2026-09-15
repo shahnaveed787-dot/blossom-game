@@ -2,6 +2,13 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/download",
+      "destination": "/blossom-game-free-download",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
