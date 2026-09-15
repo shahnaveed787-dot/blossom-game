@@ -364,48 +364,9 @@
     else setTimeout(setupReveal, 1);
   }
 
-  /* ---------- Install / add to Home Screen (mobile) ---------- */
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", function () {
       navigator.serviceWorker.register("/sw.js").catch(function () {});
     });
   }
-
-  var installWrap = document.getElementById("gameInstallWrap");
-  var installBtn = document.getElementById("gameInstall");
-  var installHelp = document.getElementById("gameInstallHelp");
-  var deferredInstall = null;
-  var isPhone = window.matchMedia && window.matchMedia("(max-width: 700px)").matches;
-  var isStandalone = (window.matchMedia && window.matchMedia("(display-mode: standalone)").matches) || window.navigator.standalone === true;
-  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-
-  var showInstall = function () {
-    if (installWrap && isPhone && !isStandalone) installWrap.hidden = false;
-  };
-
-  window.addEventListener("beforeinstallprompt", function (e) {
-    e.preventDefault();
-    deferredInstall = e;
-    showInstall();
-  });
-
-  if (isIOS) showInstall();
-
-  if (installBtn) {
-    installBtn.addEventListener("click", function () {
-      if (deferredInstall) {
-        deferredInstall.prompt();
-        deferredInstall.userChoice.finally(function () {
-          deferredInstall = null;
-          if (installWrap) installWrap.hidden = true;
-        });
-        return;
-      }
-      if (installHelp) installHelp.hidden = false;
-    });
-  }
-
-  window.addEventListener("appinstalled", function () {
-    if (installWrap) installWrap.hidden = true;
-  });
 })();

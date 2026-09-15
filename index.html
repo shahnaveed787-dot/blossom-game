@@ -274,10 +274,6 @@
             </button>
           </div>
         </div>
-        <div class="game-install-wrap" id="gameInstallWrap" hidden>
-          <button type="button" class="btn btn--primary" id="gameInstall">Download game on your phone</button>
-          <p class="game-install-help" id="gameInstallHelp" hidden>On iPhone or iPad, tap the Share button, then choose <strong>Add to Home Screen</strong>.</p>
-        </div>
       </div>
     </section>
     <section id="strategy-demo" class="demo-section" aria-labelledby="demo-title">
@@ -938,6 +934,7 @@
           <h3>Game</h3>
           <ul>
             <li><a href="#play">Play Now</a></li>
+            <li><a href="/download">Download</a></li>
             <li><a href="#how">How It Works</a></li>
             <li><a href="#howto">How to Play</a></li>
             <li><a href="#features">Features</a></li>
@@ -984,7 +981,7 @@
 
   <script>
     (function () {
-      var src = "app.js?v=24";
+      var src = "app.js?v=25";
       if (window.matchMedia && window.matchMedia("(max-width: 700px)").matches) {
         var s = document.createElement("script");
         s.src = src;
