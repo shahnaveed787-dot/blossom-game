@@ -25,9 +25,17 @@
   }
 
   if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function () {
+    var registerSw = function () {
       navigator.serviceWorker.register("/sw.js").catch(function () {});
-    });
+    };
+    if (window.matchMedia && window.matchMedia("(max-width: 700px)").matches) {
+      window.addEventListener("load", function () {
+        if ("requestIdleCallback" in window) requestIdleCallback(registerSw, { timeout: 4000 });
+        else setTimeout(registerSw, 1);
+      }, { once: true });
+    } else {
+      window.addEventListener("load", registerSw, { once: true });
+    }
   }
 
   var installBtn = document.getElementById("gameInstall");
