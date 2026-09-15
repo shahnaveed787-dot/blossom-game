@@ -224,6 +224,22 @@ main > .strip {
 .game-bar__fs:hover { background: rgba(255,255,255,0.16); }
 .game-bar__fs:focus-visible { outline: 2px solid #ffcc4d; outline-offset: 2px; }
 
+.game-install-wrap {
+  max-width: 980px;
+  margin: 16px auto 0;
+  text-align: center;
+}
+.game-install-wrap .btn { width: min(100%, 380px); }
+.game-install-help {
+  margin: 12px auto 0;
+  max-width: 440px;
+  color: var(--muted, #5b5470);
+  font-size: 0.95rem;
+}
+@media (min-width: 701px) {
+  .game-install-wrap { display: none !important; }
+}
+
 /* Fullscreen: expand the shell without reloading the game */
 .game-shell:fullscreen,
 .game-shell:-webkit-full-screen {

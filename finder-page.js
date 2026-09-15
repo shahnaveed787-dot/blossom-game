@@ -38,6 +38,12 @@
     });
   }
 
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("/sw.js").catch(function () {});
+    });
+  }
+
   var finderLoaded = false;
   function loadFinder() {
     if (finderLoaded) return;
